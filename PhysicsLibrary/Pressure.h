@@ -121,7 +121,10 @@ namespace physics {
     friend Pressure2 PHYSICSLIBRARY_API operator- (const Pressure2& lh, const Pressure2& rh);
 
     friend Pressure2 PHYSICSLIBRARY_API operator* (const Pressure& lh, const Pressure& rh);
+    friend Pressure2 PHYSICSLIBRARY_API operator* (const Pressure2& lh, const double& n);
+    friend Pressure2 PHYSICSLIBRARY_API operator* (const double& n, const Pressure2& rh);
 
+    friend Pressure2 PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const double& n);
     friend Pressure PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const Pressure& rh);
     friend double PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const Pressure2& rh);
 

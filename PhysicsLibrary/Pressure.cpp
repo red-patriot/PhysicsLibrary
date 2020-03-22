@@ -129,6 +129,18 @@ namespace physics {
     return Pressure2(lh.pascals * rh.pascals);
   }
 
+  Pressure2 operator*(const Pressure2& lh, const double& n) {
+    return Pressure2(lh.pascals2 * n);
+  }
+
+  Pressure2 operator*(const double& n, const Pressure2& rh) {
+    return rh * n;
+  }
+
+  Pressure2 operator/(const Pressure2& lh, const double& n) {
+    return Pressure2(lh.pascals2 / n);
+  }
+
   Pressure operator/(const Pressure2& lh, const Pressure& rh) {
     return Pressure(lh.pascals2 / rh.pascals);
   }
