@@ -3,10 +3,8 @@
 #include <math.h>
 
 #include "PhysicsMath.h"
-#include "Angle.h"
-#include "Length.h"
-#include "Area.h"
-#include "MomentOfArea.h"
+#include "Physics.h"
+
 
 namespace physics {
 
@@ -53,12 +51,16 @@ namespace physics {
     return Angle(::atan2(x, y));
   }
 
-  Length sqrt(const Area& a) {
-    return Length(::sqrt(a.meters2));
+  Length sqrt(const Area& r) {
+    return Length(::sqrt(r.meters2));
   }
 
-  Area sqrt(const SecondMomentOfArea& a) {
-    return Area(::sqrt(a.meters4));
+  Area sqrt(const SecondMomentOfArea& r) {
+    return Area(::sqrt(r.meters4));
+  }
+
+  Pressure sqrt(const Pressure2& r) {
+    return Pressure(::sqrt(r.pascals2));
   }
 
 };

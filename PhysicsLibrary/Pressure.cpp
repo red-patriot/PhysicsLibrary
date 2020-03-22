@@ -27,10 +27,6 @@ namespace physics {
     return Pressure(lh.pascals - rh.pascals);
   }
 
-  // TODO: Update the units for this function (or delete)
-  Pressure operator* (const Pressure& lh, const Pressure& rh) {
-    return Pressure(lh.pascals * rh.pascals);
-  }
   Pressure operator* (const Pressure& lh, const double& n) {
     return Pressure(lh.pascals * n);
   }
@@ -119,6 +115,26 @@ namespace physics {
   }
   Pressure operator"" _ksi (unsigned long long val) {
     return Pressure(val * 6'894'757.293'168'361);
+  }
+
+  Pressure2 operator+(const Pressure2& lh, const Pressure2& rh) {
+    return Pressure2(lh.pascals2 + rh.pascals2);
+  }
+
+  Pressure2 operator-(const Pressure2& lh, const Pressure2& rh) {
+    return Pressure2(lh.pascals2 - rh.pascals2);
+  }
+
+  Pressure2 operator* (const Pressure& lh, const Pressure& rh) {
+    return Pressure2(lh.pascals * rh.pascals);
+  }
+
+  Pressure operator/(const Pressure2& lh, const Pressure& rh) {
+    return Pressure(lh.pascals2 / rh.pascals);
+  }
+
+  double operator/(const Pressure2& lh, const Pressure2& rh) {
+    return lh.pascals2 / rh.pascals2;
   }
 
 }; // namespace physics

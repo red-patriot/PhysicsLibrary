@@ -43,8 +43,9 @@ namespace physics {
    * Miscellaneous math functions such as sqrt
    */
 
-  class Length PHYSICSLIBRARY_API sqrt(const class Area& a);
-  class Area PHYSICSLIBRARY_API sqrt(const class SecondMomentOfArea& a);
+  class Length PHYSICSLIBRARY_API sqrt(const class Area& r);
+  class Area PHYSICSLIBRARY_API sqrt(const class SecondMomentOfArea& r);
+  class Pressure PHYSICSLIBRARY_API sqrt(const class Pressure2& r);
 
 }; // namespace physics
 

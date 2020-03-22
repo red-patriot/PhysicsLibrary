@@ -10,6 +10,7 @@
 namespace physics {
 
   class Pressure;
+  class Pressure2;
 
   // Literal operators
   Pressure PHYSICSLIBRARY_API operator"" _Pa (long double val);
@@ -60,18 +61,19 @@ namespace physics {
     
     friend Pressure PHYSICSLIBRARY_API operator- (const Pressure& lh, const Pressure& rh);
 
-    friend Pressure PHYSICSLIBRARY_API operator* (const Pressure& lh, const Pressure& rh);
+    friend Pressure2 PHYSICSLIBRARY_API operator* (const Pressure& lh, const Pressure& rh);
     friend Pressure PHYSICSLIBRARY_API operator* (const Pressure& lh, const double& n);
     friend Pressure PHYSICSLIBRARY_API operator* (const double& n, const Pressure& rh);
     friend class Force PHYSICSLIBRARY_API operator*(const Pressure& lh, const class Area& rh);  // defined in Force.cpp
     friend class Force PHYSICSLIBRARY_API operator*(const class Area& lh, const Pressure& rh);  // defined in Force.cpp
-    friend Pressure PHYSICSLIBRARY_API operator/ (const class Stiffness& lh, const class Length& rh);
-    friend Stiffness PHYSICSLIBRARY_API operator* (const class Pressure& lh, const class Length& rh); // defined in Stiffness.cpp
-    friend Stiffness PHYSICSLIBRARY_API operator* (const class Length& lh, const class Pressure& rh); // defined in Stiffness.cpp
+    friend class Stiffness PHYSICSLIBRARY_API operator* (const class Pressure& lh, const class Length& rh); // defined in Stiffness.cpp
+    friend class Stiffness PHYSICSLIBRARY_API operator* (const class Length& lh, const class Pressure& rh); // defined in Stiffness.cpp
 
     friend double PHYSICSLIBRARY_API operator/ (const Pressure& lh, const Pressure& rh);
+    friend Pressure PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const Pressure& rh);
     friend Pressure PHYSICSLIBRARY_API operator/ (const Pressure& lh, const double& n);
     friend Pressure PHYSICSLIBRARY_API operator/ (const class Force& lh, const class Area& rh);
+    friend Pressure PHYSICSLIBRARY_API operator/ (const class Stiffness& lh, const class Length& rh);
 
     friend bool PHYSICSLIBRARY_API operator== (const Pressure& lh, const Pressure& rh);
     friend bool PHYSICSLIBRARY_API operator> (const Pressure& lh, const Pressure& rh);
@@ -98,6 +100,32 @@ namespace physics {
 
     friend Pressure PHYSICSLIBRARY_API operator"" _ksi (long double val);
     friend Pressure PHYSICSLIBRARY_API operator"" _ksi (unsigned long long val);
+
+    friend Pressure PHYSICSLIBRARY_API sqrt(const Pressure2& r);      // defined in PhysicsMath.cpp
+  };
+
+  /* Pressure^2, this class is only for use in intermetiate operations of equations */
+  class PHYSICSLIBRARY_API Pressure2 {
+  public:
+    ~Pressure2() = default;
+
+  private:
+    double pascals2;
+
+    // this constructor can only be used within friend operators
+    Pressure2(double p2) : pascals2(p2) { }
+
+    // Friends
+    friend Pressure2 PHYSICSLIBRARY_API operator+ (const Pressure2& lh, const Pressure2& rh);
+
+    friend Pressure2 PHYSICSLIBRARY_API operator- (const Pressure2& lh, const Pressure2& rh);
+
+    friend Pressure2 PHYSICSLIBRARY_API operator* (const Pressure& lh, const Pressure& rh);
+
+    friend Pressure PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const Pressure& rh);
+    friend double PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const Pressure2& rh);
+
+    friend Pressure PHYSICSLIBRARY_API sqrt(const Pressure2& r);      // defined in PhysicsMath.cpp
   };
 
 }; // namespace physics

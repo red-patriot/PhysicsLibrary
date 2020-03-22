@@ -1,6 +1,8 @@
 #ifndef Physics_h_INCLUDED
 #define Physics_h_INCLUDED
 
+/* Include the entire physics library */
+
 #include "PhysicsExport.h"
 
 // Mathematics header
