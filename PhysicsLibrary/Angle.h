@@ -19,7 +19,7 @@ namespace physics {
 
   class PHYSICSLIBRARY_API Angle {
   public:
-    explicit Angle(const double& rad);
+    explicit Angle(const double& rad);  //? Becuase radians are "imaginary" units, maybe this should be implicit?
     Angle(const Angle&) = default;
     ~Angle() = default;
 
@@ -32,6 +32,17 @@ namespace physics {
     double radians;
 
     // Friends
+    friend Angle PHYSICSLIBRARY_API operator- (const Angle& rh);
+
+    friend Angle PHYSICSLIBRARY_API operator+ (const Angle& lh, const Angle& rh);
+
+    friend Angle PHYSICSLIBRARY_API operator- (const Angle& lh, const Angle& rh);
+    
+    friend Angle PHYSICSLIBRARY_API operator* (const Angle& lh, const double& n);
+    friend Angle PHYSICSLIBRARY_API operator* (const double& n, const Angle& rh);
+
+    friend Angle PHYSICSLIBRARY_API operator/ (const Angle& lh, const double& n);
+
     friend Angle PHYSICSLIBRARY_API operator"" _deg(long double val);
     friend Angle PHYSICSLIBRARY_API operator"" _deg(unsigned long long val);
 

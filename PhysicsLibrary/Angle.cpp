@@ -20,6 +20,30 @@ namespace physics {
     return radians;
   }
 
+  Angle operator-(const Angle& rh) {
+    return Angle(-rh.radians);
+  }
+
+  Angle operator+(const Angle& lh, const Angle& rh) {
+    return Angle(lh.radians + rh.radians);
+  }
+
+  Angle operator-(const Angle& lh, const Angle& rh) {
+    return Angle(lh.radians - rh.radians);
+  }
+
+  Angle operator*(const Angle& lh, const double& n) {
+    return Angle(lh.radians * n);
+  }
+
+  Angle operator*(const double& n, const Angle& rh) {
+    return rh * n;
+  }
+
+  Angle operator/(const Angle& lh, const double& n) {
+    return Angle(lh.radians / n);
+  }
+
   /* Literals operators
    * The following units are supported: 
    * radians, degrees
