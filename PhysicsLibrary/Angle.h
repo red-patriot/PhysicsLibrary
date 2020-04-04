@@ -26,7 +26,7 @@ namespace physics {
     double rad() const;
     double deg() const;
 
-    operator double();
+    explicit operator double();         //? Becuase radians are "imaginary" units, maybe this should be implicit?
 
   private:
     double radians;

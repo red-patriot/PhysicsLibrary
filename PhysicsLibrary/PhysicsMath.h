@@ -23,7 +23,7 @@ namespace physics {
   bool PHYSICSLIBRARY_API fuzzy_equals(const double& lh, const double& rh);
   bool PHYSICSLIBRARY_API fuzzy_greater(const double& lh, const double& rh);
   bool PHYSICSLIBRARY_API approx(const double& lh, const double& rh);
- 
+
   /*
    * Trigonometric functions
    * The trig and inverse trig functions for a physics::Angle
@@ -38,7 +38,7 @@ namespace physics {
   Angle PHYSICSLIBRARY_API atan(const double& x);
   Angle PHYSICSLIBRARY_API atan2(const double& x, const double& y);
 
-  /* 
+  /*
    * Misc functions
    * Miscellaneous math functions such as sqrt
    */
@@ -48,5 +48,7 @@ namespace physics {
   class Pressure PHYSICSLIBRARY_API sqrt(const class Pressure2& r);
 
 }; // namespace physics
+
+
 
 #endif

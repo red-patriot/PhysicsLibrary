@@ -1,6 +1,6 @@
 #include "pch.h"
 
-#include <math.h>
+#include <cmath>
 
 #include "PhysicsMath.h"
 #include "Physics.h"
@@ -24,43 +24,43 @@ namespace physics {
   }
 
   double sin(const Angle& a) {
-    return ::sin(a.rad());
+    return std::sin(a.rad());
   }
 
   double cos(const Angle& a) {
-    return ::cos(a.rad());
+    return std::cos(a.rad());
   }
 
   double tan(const Angle& a) {
-    return ::tan(a.rad());
+    return std::tan(a.rad());
   }
 
   Angle asin(const double& x) {
-    return Angle(::asin(x));
+    return Angle(std::asin(x));
   }
 
   Angle acos(const double& x) {
-    return Angle(::acos(x));
+    return Angle(std::acos(x));
   }
 
   Angle atan(const double& x) {
-    return Angle(::atan(x));
+    return Angle(std::atan(x));
   }
 
   Angle atan2(const double& x, const double& y) {
-    return Angle(::atan2(x, y));
+    return Angle(std::atan2(x, y));
   }
 
   Length sqrt(const Area& r) {
-    return Length(::sqrt(r.meters2));
+    return Length(std::sqrt(r.meters2));
   }
 
   Area sqrt(const SecondMomentOfArea& r) {
-    return Area(::sqrt(r.meters4));
+    return Area(std::sqrt(r.meters4));
   }
 
   Pressure sqrt(const Pressure2& r) {
-    return Pressure(::sqrt(r.pascals2));
+    return Pressure(std::sqrt(r.pascals2));
   }
 
 };
