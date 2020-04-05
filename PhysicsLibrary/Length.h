@@ -35,7 +35,8 @@ namespace physics {
 
   class PHYSICSLIBRARY_API Length {
   public:
-    Length() = default;
+    explicit Length(double _meters = 0) : meters(_meters) { }
+
     Length(const Length&) = default;
     ~Length() = default;
 
@@ -53,9 +54,6 @@ namespace physics {
 
   private:
     double meters;
-
-    // This constructor can only be used with friend operators
-    Length(double m) : meters(m) { }
 
     // Friends
     friend Length PHYSICSLIBRARY_API operator- (const Length& lh);

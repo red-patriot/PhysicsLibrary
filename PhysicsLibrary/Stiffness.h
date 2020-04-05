@@ -25,7 +25,7 @@ namespace physics {
 
   class PHYSICSLIBRARY_API Stiffness {
   public:
-    Stiffness() = default;
+    explicit Stiffness(double _newtons_per_meter = 0) : newtons_per_meter(_newtons_per_meter) { }
     Stiffness(const Stiffness&) = default;
     ~Stiffness() = default;
 
@@ -40,9 +40,6 @@ namespace physics {
 
   private:
     double newtons_per_meter;
-
-    // This constructor can only be used with friend operators
-    Stiffness(double npm) : newtons_per_meter(npm) { }
 
     // Friends
     friend Stiffness PHYSICSLIBRARY_API operator- (const Stiffness& lh);

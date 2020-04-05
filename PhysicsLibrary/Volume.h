@@ -28,7 +28,7 @@ namespace physics {
 
   class PHYSICSLIBRARY_API Volume {
   public:
-    Volume() = default;
+    explicit Volume(const double& _meters3 = 0) : meters3(_meters3) { }
     Volume(const Volume&) = default;
     ~Volume() = default;
 
@@ -44,8 +44,6 @@ namespace physics {
 
   private:
     double meters3;
-
-    Volume(const double& m3) : meters3(m3) { }
 
     // Friends
     friend Volume PHYSICSLIBRARY_API operator- (const Volume& lh);

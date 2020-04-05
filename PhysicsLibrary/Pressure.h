@@ -33,7 +33,7 @@ namespace physics {
 
   class PHYSICSLIBRARY_API Pressure {
   public:
-    Pressure() = default;
+    explicit Pressure(double _pascals = 0) : pascals(_pascals) { }
     Pressure(const Pressure&) = default;
     ~Pressure() = default;
 
@@ -50,9 +50,6 @@ namespace physics {
 
   private:
     double pascals;
-
-    // this constructor can only be used within friend operators
-    Pressure(double k) : pascals(k) { }
 
     // Friends
     friend Pressure PHYSICSLIBRARY_API operator- (const Pressure& lh);

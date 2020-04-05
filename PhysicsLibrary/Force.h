@@ -21,7 +21,7 @@ namespace physics {
 
   class PHYSICSLIBRARY_API Force {
   public:
-    Force() = default;
+    explicit Force(double _newtons=0) : newtons(_newtons) { }
     Force(const Force&) = default;
     ~Force() = default;
 
@@ -36,9 +36,6 @@ namespace physics {
 
   private:
     double newtons;
-
-    // this constructor can only be used within friend operators
-    Force(double n) : newtons(n) { }
 
     // Friends
     friend Force PHYSICSLIBRARY_API operator- (const Force& lh);

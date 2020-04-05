@@ -4,9 +4,6 @@
 #include "PhysicsMath.h"
 
 namespace physics {
-  
-  Angle::Angle(const double& rads) :
-    radians(rads) { }
 
   double Angle::rad() const {
     return radians;

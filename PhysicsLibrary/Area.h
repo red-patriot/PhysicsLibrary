@@ -28,7 +28,7 @@ namespace physics {
 
   class PHYSICSLIBRARY_API Area {
   public:
-    Area() = default;
+    explicit Area(const double _meters2 = 0) : meters2(_meters2) { }
     Area(const Area&) = default;
     ~Area() = default;
 
@@ -46,9 +46,6 @@ namespace physics {
 
   private:
     double meters2;
-
-    // This constructor can only be used with friend operators
-    Area(const double m2) : meters2(m2) { }
 
     // Friends
     friend Area PHYSICSLIBRARY_API operator- (const Area& lh);

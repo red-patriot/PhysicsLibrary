@@ -28,7 +28,7 @@ namespace physics {
 
   class PHYSICSLIBRARY_API SecondMomentOfArea {
   public:
-    SecondMomentOfArea() = default;
+    explicit SecondMomentOfArea(const double& _meters4=0) : meters4(_meters4) { }
     SecondMomentOfArea(const SecondMomentOfArea&) = default;
     ~SecondMomentOfArea() = default;
 
@@ -45,8 +45,6 @@ namespace physics {
 
   private:
     double meters4;
-
-    SecondMomentOfArea(const double& m4) : meters4(m4) { }
 
     // Friends
     friend SecondMomentOfArea PHYSICSLIBRARY_API operator- (const SecondMomentOfArea& lh);

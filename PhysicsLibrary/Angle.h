@@ -19,7 +19,7 @@ namespace physics {
 
   class PHYSICSLIBRARY_API Angle {
   public:
-    explicit Angle(const double& rad);  //? Becuase radians are "imaginary" units, maybe this should be implicit?
+    explicit Angle(const double& _radians = 0) : radians(_radians) { }  //? Becuase radians are "imaginary" units, maybe this should be implicit?
     Angle(const Angle&) = default;
     ~Angle() = default;
 
