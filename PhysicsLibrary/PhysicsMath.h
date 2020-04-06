@@ -20,32 +20,32 @@ namespace physics {
    *   of those that are exact, this library uses slightly fuzzy comparisons for its types.
    */
 
-  bool PHYSICSLIBRARY_API fuzzy_equals(const double& lh, const double& rh);
-  bool PHYSICSLIBRARY_API fuzzy_greater(const double& lh, const double& rh);
-  bool PHYSICSLIBRARY_API approx(const double& lh, const double& rh);
+  inline bool PHYSICSLIBRARY_API fuzzy_equals(const double& lh, const double& rh);
+  inline bool PHYSICSLIBRARY_API fuzzy_greater(const double& lh, const double& rh);
+  inline bool PHYSICSLIBRARY_API approx(const double& lh, const double& rh);
 
   /*
    * Trigonometric functions
    * The trig and inverse trig functions for a physics::Angle
    */
 
-  double PHYSICSLIBRARY_API sin(const class Angle& a);
-  double PHYSICSLIBRARY_API cos(const class Angle& a);
-  double PHYSICSLIBRARY_API tan(const class Angle& a);
+  inline double PHYSICSLIBRARY_API sin(const class Angle& a);
+  inline double PHYSICSLIBRARY_API cos(const class Angle& a);
+  inline double PHYSICSLIBRARY_API tan(const class Angle& a);
 
-  Angle PHYSICSLIBRARY_API asin(const double& x);
-  Angle PHYSICSLIBRARY_API acos(const double& x);
-  Angle PHYSICSLIBRARY_API atan(const double& x);
-  Angle PHYSICSLIBRARY_API atan2(const double& x, const double& y);
+  inline Angle PHYSICSLIBRARY_API asin(const double& x);
+  inline Angle PHYSICSLIBRARY_API acos(const double& x);
+  inline Angle PHYSICSLIBRARY_API atan(const double& x);
+  inline Angle PHYSICSLIBRARY_API atan2(const double& x, const double& y);
 
   /*
    * Misc functions
    * Miscellaneous math functions such as sqrt
    */
 
-  class Length PHYSICSLIBRARY_API sqrt(const class Area& r);
-  class Area PHYSICSLIBRARY_API sqrt(const class SecondMomentOfArea& r);
-  class Pressure PHYSICSLIBRARY_API sqrt(const class Pressure2& r);
+  inline class Length PHYSICSLIBRARY_API sqrt(const class Area& r);
+  inline class Area PHYSICSLIBRARY_API sqrt(const class SecondMomentOfArea& r);
+  inline class Pressure PHYSICSLIBRARY_API sqrt(const class Pressure2& r);
 
   inline class Angle abs(const class Angle& x);
   inline class Length abs(const class Length& x);
