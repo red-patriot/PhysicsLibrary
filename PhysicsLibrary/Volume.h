@@ -3,6 +3,8 @@
 
 #include "PhysicsExport.h"
 
+#include <Eigen/Core>
+
 namespace physics {
 
   class SecondMomentOfArea;
@@ -94,9 +96,33 @@ namespace physics {
     friend Volume PHYSICSLIBRARY_API operator"" _ft3(unsigned long long val);
   };
 
+  inline Volume PHYSICSLIBRARY_API conj(const Volume& x) { return x; }
+  inline Volume PHYSICSLIBRARY_API real(const Volume& x) { return x; }
+  inline Volume PHYSICSLIBRARY_API imag(const Volume&) { return 0_m3; }
+
 }; // namespace physics
 
-//? This feels hacky, is there some other way to do this?
+/* Integration with Eigen */
+namespace Eigen {
+
+  template<> struct NumTraits<physics::Volume> : NumTraits<double> {
+    typedef physics::Volume Real;
+    typedef physics::Volume NonInteger;
+    typedef physics::Volume Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
+
 using physics::operator"" _mm3;         using physics::operator"" _cm3;
 using physics::operator"" _m3;
 using physics::operator"" _in3;         using physics::operator"" _ft3;

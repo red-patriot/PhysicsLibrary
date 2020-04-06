@@ -7,6 +7,8 @@
 
 #include "PhysicsExport.h"
 
+#include <Eigen/Core>
+
 namespace physics {
 
   class Angle;
@@ -59,7 +61,32 @@ namespace physics {
     friend Angle PHYSICSLIBRARY_API atan2(const double& x, const double& y);
   };
 
-};  // namespace physics
+  inline Angle PHYSICSLIBRARY_API conj(const Angle& x) { return x; }
+  inline Angle PHYSICSLIBRARY_API real(const Angle& x) { return x; }
+  inline Angle PHYSICSLIBRARY_API imag(const Angle&) { return 0_rad; }
+
+}; // namespace physics
+
+/* Integration with Eigen */
+namespace Eigen {
+
+  template<> struct NumTraits<physics::Angle> : NumTraits<double> {
+    typedef physics::Angle Real;
+    typedef physics::Angle NonInteger;
+    typedef physics::Angle Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
 
 using physics::operator"" _rad;        using physics::operator"" _deg;
 

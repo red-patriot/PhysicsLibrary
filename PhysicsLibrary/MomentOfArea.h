@@ -3,6 +3,8 @@
 
 #include "PhysicsExport.h"
 
+#include <Eigen/Core>
+
 namespace physics {
 
   class SecondMomentOfArea;
@@ -87,12 +89,35 @@ namespace physics {
 
     friend SecondMomentOfArea PHYSICSLIBRARY_API operator"" _ft4(long double val);
     friend SecondMomentOfArea PHYSICSLIBRARY_API operator"" _ft4(unsigned long long val);
-
-    // Other mathematical operators
-    friend Area PHYSICSLIBRARY_API sqrt(const SecondMomentOfArea& a);
   };
 
+  inline SecondMomentOfArea PHYSICSLIBRARY_API conj(const SecondMomentOfArea& x) { return x; }
+  inline SecondMomentOfArea PHYSICSLIBRARY_API real(const SecondMomentOfArea& x) { return x; }
+  inline SecondMomentOfArea PHYSICSLIBRARY_API imag(const SecondMomentOfArea&) { return 0_m4; }
+
+
 }; // namespace physics
+
+/* Integration with Eigen */
+namespace Eigen {
+
+  template<> struct NumTraits<physics::SecondMomentOfArea> : NumTraits<double> {
+    typedef physics::SecondMomentOfArea Real;
+    typedef physics::SecondMomentOfArea NonInteger;
+    typedef physics::SecondMomentOfArea Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
 
 using physics::operator"" _mm4;         using physics::operator"" _m4;
 using physics::operator"" _in4;         using physics::operator"" _ft4;

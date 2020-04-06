@@ -3,21 +3,22 @@
 
 #include "PhysicsExport.h"
 
+#include <Eigen/Core>
+
 namespace physics {
-  class Force;
 
   // Literal operators
-  Force PHYSICSLIBRARY_API operator"" _N(long double val);
-  Force PHYSICSLIBRARY_API operator"" _N(unsigned long long val);
+  class Force PHYSICSLIBRARY_API operator"" _N(long double val);
+  class Force PHYSICSLIBRARY_API operator"" _N(unsigned long long val);
 
-  Force PHYSICSLIBRARY_API operator"" _kN(long double val);
-  Force PHYSICSLIBRARY_API operator"" _kN(unsigned long long val);
+  class Force PHYSICSLIBRARY_API operator"" _kN(long double val);
+  class Force PHYSICSLIBRARY_API operator"" _kN(unsigned long long val);
 
-  Force PHYSICSLIBRARY_API operator"" _lbf(long double val);
-  Force PHYSICSLIBRARY_API operator"" _lbf(unsigned long long val);
+  class Force PHYSICSLIBRARY_API operator"" _lbf(long double val);
+  class Force PHYSICSLIBRARY_API operator"" _lbf(unsigned long long val);
 
-  Force PHYSICSLIBRARY_API operator"" _kips(long double val);
-  Force PHYSICSLIBRARY_API operator"" _kips(unsigned long long val);
+  class Force PHYSICSLIBRARY_API operator"" _kips(long double val);
+  class Force PHYSICSLIBRARY_API operator"" _kips(unsigned long long val);
 
   class PHYSICSLIBRARY_API Force {
   public:
@@ -77,7 +78,33 @@ namespace physics {
     friend Force PHYSICSLIBRARY_API operator"" _kips(unsigned long long val);
   };
 
-};  // namespace physics
+  inline Force PHYSICSLIBRARY_API conj(const Force& x) { return x; }
+  inline Force PHYSICSLIBRARY_API real(const Force& x) { return x; }
+  inline Force PHYSICSLIBRARY_API imag(const Force&) { return 0_N; }
+  
+
+}; // namespace physics
+
+/* Integration with Eigen */
+namespace Eigen {
+
+  template<> struct NumTraits<physics::Force> : NumTraits<double> {
+    typedef physics::Force Real;
+    typedef physics::Force NonInteger;
+    typedef physics::Force Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
 
 using physics::operator""_N;        using physics::operator""_kN;
 using physics::operator""_lbf;      using physics::operator""_kips;

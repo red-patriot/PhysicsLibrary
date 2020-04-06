@@ -7,6 +7,8 @@
 
 #include "PhysicsExport.h"
 
+#include <Eigen/Core>
+
 namespace physics {
 
   class Stiffness;
@@ -81,7 +83,33 @@ namespace physics {
     friend Stiffness PHYSICSLIBRARY_API operator"" _lbpft(unsigned long long val);
   };
 
-};  // namespace physics
+  inline Stiffness PHYSICSLIBRARY_API conj(const Stiffness& x) { return x; }
+  inline Stiffness PHYSICSLIBRARY_API real(const Stiffness& x) { return x; }
+  inline Stiffness PHYSICSLIBRARY_API imag(const Stiffness&) { return 0_Npm; }
+  
+
+}; // namespace physics
+
+/* Integration with Eigen */
+namespace Eigen {
+
+  template<> struct NumTraits<physics::Stiffness> : NumTraits<double> {
+    typedef physics::Stiffness Real;
+    typedef physics::Stiffness NonInteger;
+    typedef physics::Stiffness Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
 
 using physics::operator"" _Npm;       using physics::operator"" _Npmm;
 using physics::operator"" _lbpin;     using physics::operator"" _lbpft;

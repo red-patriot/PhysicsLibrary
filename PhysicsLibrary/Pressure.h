@@ -7,6 +7,8 @@
 
 #include "PhysicsExport.h"
 
+#include <Eigen/Core>
+
 namespace physics {
 
   class Pressure;
@@ -97,20 +99,16 @@ namespace physics {
 
     friend Pressure PHYSICSLIBRARY_API operator"" _ksi (long double val);
     friend Pressure PHYSICSLIBRARY_API operator"" _ksi (unsigned long long val);
-
-    friend Pressure PHYSICSLIBRARY_API sqrt(const Pressure2& r);      // defined in PhysicsMath.cpp
   };
 
   /* Pressure^2, this class is only for use in intermetiate operations of equations */
   class PHYSICSLIBRARY_API Pressure2 {
   public:
+    Pressure2(double _pascals2 = 0) : pascals2(_pascals2) { }
     ~Pressure2() = default;
 
   private:
     double pascals2;
-
-    // this constructor can only be used within friend operators
-    Pressure2(double p2) : pascals2(p2) { }
 
     // Friends
     friend Pressure2 PHYSICSLIBRARY_API operator+ (const Pressure2& lh, const Pressure2& rh);
@@ -128,9 +126,33 @@ namespace physics {
     friend Pressure PHYSICSLIBRARY_API sqrt(const Pressure2& r);      // defined in PhysicsMath.cpp
   };
 
+  inline Pressure PHYSICSLIBRARY_API conj(const Pressure& x) { return x; }
+  inline Pressure PHYSICSLIBRARY_API real(const Pressure& x) { return x; }
+  inline Pressure PHYSICSLIBRARY_API imag(const Pressure&) { return 0_Pa; }
+
 }; // namespace physics
 
-//? This feels hacky, is there some other way to do this?
+/* Integration with Eigen */
+namespace Eigen {
+  
+  template<> struct NumTraits<physics::Pressure> : NumTraits<double> {
+    typedef physics::Pressure Real;
+    typedef physics::Pressure NonInteger;
+    typedef physics::Pressure Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
+
 using physics::operator"" _Pa;        using physics::operator"" _kPa;
 using physics::operator"" _MPa;       using physics::operator"" _GPa;
 using physics::operator"" _psi;       using physics::operator"" _ksi;

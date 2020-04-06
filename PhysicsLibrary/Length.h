@@ -3,6 +3,8 @@
 
 #include "PhysicsExport.h"
 
+#include <Eigen/Core>
+
 namespace physics {
 
   class SecondMomentOfArea;
@@ -115,12 +117,35 @@ namespace physics {
 
     friend Length PHYSICSLIBRARY_API  operator"" _mi (long double val);
     friend Length PHYSICSLIBRARY_API  operator"" _mi (unsigned long long val);
-
-    // Other mathematical operators
-    friend Length PHYSICSLIBRARY_API sqrt(const Area& a);
   };
 
+  inline Length PHYSICSLIBRARY_API conj(const Length& x) { return x; }
+  inline Length PHYSICSLIBRARY_API real(const Length& x) { return x; }
+  inline Length PHYSICSLIBRARY_API imag(const Length&) { return 0_m; }
+
+
 }; // namespace physics
+
+/* Integration with Eigen */
+namespace Eigen {
+
+  template<> struct NumTraits<physics::Length> : NumTraits<double> {
+    typedef physics::Length Real;
+    typedef physics::Length NonInteger;
+    typedef physics::Length Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
 
 //? This feels hacky, is there some other way to do this?
 using physics::operator"" _mm;      using physics::operator"" _cm;

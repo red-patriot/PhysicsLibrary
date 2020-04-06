@@ -1,9 +1,8 @@
 #include "pch.h"
-
-#include <cmath>
-
 #include "PhysicsMath.h"
 #include "Physics.h"
+
+#include <cmath>
 
 
 namespace physics {
@@ -52,15 +51,55 @@ namespace physics {
   }
 
   Length sqrt(const Area& r) {
-    return Length(std::sqrt(r.meters2));
+    return Length(std::sqrt(r.m2()));
   }
 
   Area sqrt(const SecondMomentOfArea& r) {
-    return Area(std::sqrt(r.meters4));
+    return Area(std::sqrt(r.m4()));
   }
 
   Pressure sqrt(const Pressure2& r) {
     return Pressure(std::sqrt(r.pascals2));
+  }
+
+  Angle abs(const Angle& x) {
+    return Angle(fabs(x.rad()));
+  }
+
+  Length abs(const Length& x) {
+    return Length(fabs(x.m())); 
+  }
+
+  Area abs(const Area& x) {
+    return Area(std::fabs(x.m2()));
+  }
+
+  Volume abs(const Volume& x) {
+    return Volume(fabs(x.m3()));
+  }
+
+  SecondMomentOfArea abs(const SecondMomentOfArea& x) { 
+    return SecondMomentOfArea(fabs(x.m4())); 
+  }
+
+  Force abs(const Force& x) {
+    return Force(fabs(x.N())); 
+  }
+
+  Stiffness abs(const Stiffness& x) {
+    return Stiffness(fabs(x.Npm()));
+  }
+
+  Pressure abs(const Pressure& x) {
+    return Pressure(fabs(x.Pa())); 
+  }
+
+  Area abs2(const Length& x) {
+    return x*x; 
+  }
+
+  Pressure2 abs2(const Pressure& x) {
+    return x*x; 
   }
 
 };

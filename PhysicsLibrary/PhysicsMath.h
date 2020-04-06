@@ -47,6 +47,18 @@ namespace physics {
   class Area PHYSICSLIBRARY_API sqrt(const class SecondMomentOfArea& r);
   class Pressure PHYSICSLIBRARY_API sqrt(const class Pressure2& r);
 
+  inline class Angle abs(const class Angle& x);
+  inline class Length abs(const class Length& x);
+  inline class Area abs(const class Area& x);
+  inline class Volume PHYSICSLIBRARY_API abs(const class Volume& x);
+  inline class SecondMomentOfArea PHYSICSLIBRARY_API abs(const class SecondMomentOfArea& x);
+  inline class Force abs(const class Force& x);
+  inline class Stiffness PHYSICSLIBRARY_API abs(const class Stiffness& x);
+  inline class Pressure PHYSICSLIBRARY_API abs(const class Pressure& x);
+
+  inline class Area abs2(const class Length& x);
+  inline class Pressure2 abs2(const class Pressure& x);
+
 }; // namespace physics
 
 
