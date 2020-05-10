@@ -6,31 +6,31 @@
 namespace physics {
 
   double Angle::rad() const {
-    return radians;
+    return value();
   }
 
   double Angle::deg() const {
-    return radians * 180 / pi;
+    return value() * 180 / pi;
   }
 
   Angle::operator double() { 
-    return radians;
+    return value();
   }
 
   Angle operator-(const Angle& rh) {
-    return Angle(-rh.radians);
+    return Angle(-rh.value());
   }
 
   Angle operator+(const Angle& lh, const Angle& rh) {
-    return Angle(lh.radians + rh.radians);
+    return Angle(lh.value() + rh.value());
   }
 
   Angle operator-(const Angle& lh, const Angle& rh) {
-    return Angle(lh.radians - rh.radians);
+    return Angle(lh.value() - rh.value());
   }
 
   Angle operator*(const Angle& lh, const double& n) {
-    return Angle(lh.radians * n);
+    return Angle(lh.value() * n);
   }
 
   Angle operator*(const double& n, const Angle& rh) {
@@ -38,7 +38,7 @@ namespace physics {
   }
 
   Angle operator/(const Angle& lh, const double& n) {
-    return Angle(lh.radians / n);
+    return Angle(lh.value() / n);
   }
 
   /* Literals operators

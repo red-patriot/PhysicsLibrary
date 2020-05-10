@@ -7,13 +7,30 @@
 
 namespace physics {
 
-  class SecondMomentOfArea;
   class Volume;
   class Area;
   class Length;
 
   // First moment of Area and Volume have the same units, so define them as "equal" here
   using FirstMomentOfArea = Volume;
+
+  class PHYSICSLIBRARY_API SecondMomentOfArea : public PhysicsBase {
+  public:
+    explicit SecondMomentOfArea(const double& _meters4 = 0) : PhysicsBase(_meters4) { }
+    SecondMomentOfArea(const SecondMomentOfArea&) = default;
+    ~SecondMomentOfArea() = default;
+
+    double mm4() const { return _value * 1'000'000'000'000; }
+    double m4() const { return _value; }
+
+    double in4() const { return _value * 100'000'000 / 41.623'142'56; }
+    double ft4() const { return _value * 100'000'000 / 863'097.481'241'6; }
+
+    SecondMomentOfArea& operator+= (const SecondMomentOfArea& rh) { _value += rh._value; return *this; }
+    SecondMomentOfArea& operator-= (const SecondMomentOfArea& rh) { _value -= rh._value; return *this; }
+    SecondMomentOfArea& operator*= (const double& rh) { _value *= rh; return *this; }
+    SecondMomentOfArea& operator/= (const double& rh) { _value /= rh; return *this; }
+  };
 
   // Literal operators
   SecondMomentOfArea PHYSICSLIBRARY_API operator"" _mm4(long double val);
@@ -28,53 +45,33 @@ namespace physics {
   SecondMomentOfArea PHYSICSLIBRARY_API operator"" _ft4(long double val);
   SecondMomentOfArea PHYSICSLIBRARY_API operator"" _ft4(unsigned long long val);
 
-  class PHYSICSLIBRARY_API SecondMomentOfArea : public PhysicsBase {
-  public:
-    explicit SecondMomentOfArea(const double& _meters4=0) : PhysicsBase(_meters4) { }
-    SecondMomentOfArea(const SecondMomentOfArea&) = default;
-    ~SecondMomentOfArea() = default;
+  SecondMomentOfArea PHYSICSLIBRARY_API operator- (const SecondMomentOfArea& lh);
+  
+  SecondMomentOfArea PHYSICSLIBRARY_API operator+ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
 
-    double mm4() const { return _value * 1'000'000'000'000;  }
-    double m4() const { return _value; }
-
-    double in4() const { return _value * 100'000'000 / 41.623'142'56; }
-    double ft4() const { return _value * 100'000'000 / 863'097.481'241'6; }
-
-    SecondMomentOfArea& operator+= (const SecondMomentOfArea& rh) { _value += rh._value; return *this; }
-    SecondMomentOfArea& operator-= (const SecondMomentOfArea& rh) { _value -= rh._value; return *this; }
-    SecondMomentOfArea& operator*= (const double& rh) { _value *= rh; return *this; }
-    SecondMomentOfArea& operator/= (const double& rh) { _value /= rh; return *this; }
-
-  private:
-    // Friends
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator- (const SecondMomentOfArea& lh);
-
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator+ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator- (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  SecondMomentOfArea PHYSICSLIBRARY_API operator- (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
 
 
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator* (const SecondMomentOfArea& lh, const double& n);
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator* (const double& n, const SecondMomentOfArea& rh);
-    friend PHYSICSLIBRARY_API SecondMomentOfArea operator* (const Volume& lh, const Length& rh);
-    friend PHYSICSLIBRARY_API SecondMomentOfArea operator* (const Length& lh, const Volume& rh);
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Area& lh, const Area& rh);
+  SecondMomentOfArea PHYSICSLIBRARY_API operator* (const SecondMomentOfArea& lh, const double& n);
+  SecondMomentOfArea PHYSICSLIBRARY_API operator* (const double& n, const SecondMomentOfArea& rh);
+  PHYSICSLIBRARY_API SecondMomentOfArea operator* (const Volume& lh, const Length& rh);
+  PHYSICSLIBRARY_API SecondMomentOfArea operator* (const Length& lh, const Volume& rh);
+  SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Area& lh, const Area& rh);
 
-    friend Volume PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Length& rh);  // defined in Volume.cpp
-    friend Area PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Area& rh);      // defined in Area.cpp
-    friend Length PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh,
-                                                const Volume& rh);                                // defined in Length.cpp
-    friend double PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, 
-                                                const SecondMomentOfArea& rh);
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const double& n);
+  Volume PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Length& rh);  // defined in Volume.cpp
+  Area PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Area& rh);      // defined in Area.cpp
+  Length PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh,
+                                              const Volume& rh);                                // defined in Length.cpp
+  double PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh,
+                                              const SecondMomentOfArea& rh);
+  SecondMomentOfArea PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const double& n);
 
-    friend bool PHYSICSLIBRARY_API operator== (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-    friend bool PHYSICSLIBRARY_API operator> (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-    friend bool PHYSICSLIBRARY_API operator!= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-    friend bool PHYSICSLIBRARY_API operator< (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-    friend bool PHYSICSLIBRARY_API operator>= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-    friend bool PHYSICSLIBRARY_API operator<= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
-  };
+  bool PHYSICSLIBRARY_API operator== (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  bool PHYSICSLIBRARY_API operator> (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  bool PHYSICSLIBRARY_API operator!= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  bool PHYSICSLIBRARY_API operator< (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  bool PHYSICSLIBRARY_API operator>= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
+  bool PHYSICSLIBRARY_API operator<= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh);
 
   inline SecondMomentOfArea PHYSICSLIBRARY_API conj(const SecondMomentOfArea& x) { return x; }
   inline SecondMomentOfArea PHYSICSLIBRARY_API real(const SecondMomentOfArea& x) { return x; }

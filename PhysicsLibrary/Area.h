@@ -12,22 +12,6 @@ namespace physics {
   class Area;
   class Length;
 
-  // Literal operators
-  Area PHYSICSLIBRARY_API operator"" _mm2(long double val);
-  Area PHYSICSLIBRARY_API operator"" _mm2(unsigned long long val);
-
-  Area PHYSICSLIBRARY_API operator"" _cm2(long double val);
-  Area PHYSICSLIBRARY_API operator"" _cm2(unsigned long long val);
-
-  Area PHYSICSLIBRARY_API operator"" _m2(long double val);
-  Area PHYSICSLIBRARY_API operator"" _m2(unsigned long long val);
-
-  Area PHYSICSLIBRARY_API operator"" _in2(long double val);
-  Area PHYSICSLIBRARY_API operator"" _in2(unsigned long long val);
-
-  Area PHYSICSLIBRARY_API operator"" _ft2(long double val);
-  Area PHYSICSLIBRARY_API operator"" _ft2(unsigned long long val);
-
   class PHYSICSLIBRARY_API Area : public PhysicsBase {
   public:
     explicit Area(const double _meters2 = 0) : PhysicsBase(_meters2) { }
@@ -45,40 +29,54 @@ namespace physics {
     Area& operator-= (const Area& rh) { _value -= rh._value; return *this; }
     Area& operator*= (const double& rh) { _value *= rh; return *this; }
     Area& operator/= (const double& rh) { _value /= rh; return *this; }
-
-  private:
-    // Friends
-    friend Area PHYSICSLIBRARY_API operator- (const Area& lh);
-
-    friend Area PHYSICSLIBRARY_API operator+ (const Area& lh, const Area& rh);
-
-    friend Area PHYSICSLIBRARY_API operator- (const Area& lh, const Area& rh);
-
-    friend Area PHYSICSLIBRARY_API operator* (const Length& lh, const Length& rh);
-    friend Area PHYSICSLIBRARY_API operator* (const Area& lh, const double& n);
-    friend Area PHYSICSLIBRARY_API operator* (const double& n, const Area& rh);
-    friend Volume PHYSICSLIBRARY_API operator* (const Area& lh, const Length& rh);            // defined in Volume.cpp
-    friend Volume PHYSICSLIBRARY_API operator* (const Length& lh, const Area& rh);            // defined in Volume.cpp
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Area& lh, const Area& rh);  // defined in MomentOfArea.cpp
-    friend class Force PHYSICSLIBRARY_API operator*(const class Pressure& lh, const Area& rh);// defined in Force.cpp
-    friend class Force PHYSICSLIBRARY_API operator*(const Area& lh, const class Pressure& rh);// defined in Force.cpp
-
-    friend Area PHYSICSLIBRARY_API operator/ (const Volume& lh, const Length& rh);
-    friend Area PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Area& rh);
-    friend Length PHYSICSLIBRARY_API operator/ (const Volume& lh, const Area& rh);            // defined in Length.cpp
-    friend Length PHYSICSLIBRARY_API operator/ (const Area& lh, const Length& rh);            // defined in Length.cpp
-    friend double PHYSICSLIBRARY_API operator/ (const Area& lh, const Area& rh);
-    friend Area PHYSICSLIBRARY_API operator/ (const Area& lh, const double& n);
-    friend class Pressure PHYSICSLIBRARY_API operator/ (const class Force& lh, 
-                                                        const Area& rh);                      // defined in Pressure.cpp
-
-    friend bool PHYSICSLIBRARY_API operator== (const Area& lh, const Area& rh);
-    friend bool PHYSICSLIBRARY_API operator> (const Area& lh, const Area& rh);
-    friend bool PHYSICSLIBRARY_API operator!= (const Area& lh, const Area& rh);
-    friend bool PHYSICSLIBRARY_API operator< (const Area& lh, const Area& rh);
-    friend bool PHYSICSLIBRARY_API operator>= (const Area& lh, const Area& rh);
-    friend bool PHYSICSLIBRARY_API operator<= (const Area& lh, const Area& rh);
   };
+
+  // Literal operators
+  Area PHYSICSLIBRARY_API operator"" _mm2(long double val);
+  Area PHYSICSLIBRARY_API operator"" _mm2(unsigned long long val);
+
+  Area PHYSICSLIBRARY_API operator"" _cm2(long double val);
+  Area PHYSICSLIBRARY_API operator"" _cm2(unsigned long long val);
+
+  Area PHYSICSLIBRARY_API operator"" _m2(long double val);
+  Area PHYSICSLIBRARY_API operator"" _m2(unsigned long long val);
+
+  Area PHYSICSLIBRARY_API operator"" _in2(long double val);
+  Area PHYSICSLIBRARY_API operator"" _in2(unsigned long long val);
+
+  Area PHYSICSLIBRARY_API operator"" _ft2(long double val);
+  Area PHYSICSLIBRARY_API operator"" _ft2(unsigned long long val);
+
+  Area PHYSICSLIBRARY_API operator- (const Area& lh);
+  
+  Area PHYSICSLIBRARY_API operator+ (const Area& lh, const Area& rh);
+
+  Area PHYSICSLIBRARY_API operator- (const Area& lh, const Area& rh);
+
+  Area PHYSICSLIBRARY_API operator* (const Length& lh, const Length& rh);
+  Area PHYSICSLIBRARY_API operator* (const Area& lh, const double& n);
+  Area PHYSICSLIBRARY_API operator* (const double& n, const Area& rh);
+  Volume PHYSICSLIBRARY_API operator* (const Area& lh, const Length& rh);            // defined in Volume.cpp
+  Volume PHYSICSLIBRARY_API operator* (const Length& lh, const Area& rh);            // defined in Volume.cpp
+  SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Area& lh, const Area& rh);  // defined in MomentOfArea.cpp
+  class Force PHYSICSLIBRARY_API operator*(const class Pressure& lh, const Area& rh);// defined in Force.cpp
+  class Force PHYSICSLIBRARY_API operator*(const Area& lh, const class Pressure& rh);// defined in Force.cpp
+
+  Area PHYSICSLIBRARY_API operator/ (const Volume& lh, const Length& rh);
+  Area PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Area& rh);
+  Length PHYSICSLIBRARY_API operator/ (const Volume& lh, const Area& rh);            // defined in Length.cpp
+  Length PHYSICSLIBRARY_API operator/ (const Area& lh, const Length& rh);            // defined in Length.cpp
+  double PHYSICSLIBRARY_API operator/ (const Area& lh, const Area& rh);
+  Area PHYSICSLIBRARY_API operator/ (const Area& lh, const double& n);
+  class Pressure PHYSICSLIBRARY_API operator/ (const class Force& lh,
+                                               const Area& rh);                      // defined in Pressure.cpp
+
+  bool PHYSICSLIBRARY_API operator== (const Area& lh, const Area& rh);
+  bool PHYSICSLIBRARY_API operator> (const Area& lh, const Area& rh);
+  bool PHYSICSLIBRARY_API operator!= (const Area& lh, const Area& rh);
+  bool PHYSICSLIBRARY_API operator< (const Area& lh, const Area& rh);
+  bool PHYSICSLIBRARY_API operator>= (const Area& lh, const Area& rh);
+  bool PHYSICSLIBRARY_API operator<= (const Area& lh, const Area& rh);
 
   inline Area PHYSICSLIBRARY_API conj(const Area& x) { return x; }
   inline Area PHYSICSLIBRARY_API real(const Area& x) { return x; }

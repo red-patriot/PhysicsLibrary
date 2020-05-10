@@ -7,18 +7,7 @@
 
 namespace physics {
 
-  // Literal operators
-  class Force PHYSICSLIBRARY_API operator"" _N(long double val);
-  class Force PHYSICSLIBRARY_API operator"" _N(unsigned long long val);
 
-  class Force PHYSICSLIBRARY_API operator"" _kN(long double val);
-  class Force PHYSICSLIBRARY_API operator"" _kN(unsigned long long val);
-
-  class Force PHYSICSLIBRARY_API operator"" _lbf(long double val);
-  class Force PHYSICSLIBRARY_API operator"" _lbf(unsigned long long val);
-
-  class Force PHYSICSLIBRARY_API operator"" _kips(long double val);
-  class Force PHYSICSLIBRARY_API operator"" _kips(unsigned long long val);
 
   class PHYSICSLIBRARY_API Force : public PhysicsBase {
   public:
@@ -36,34 +25,45 @@ namespace physics {
     Force& operator-= (const Force& rh) { _value -= rh._value; return *this; }
     Force& operator*= (const double& rh) { _value *= rh; return *this; }
     Force& operator/= (const double& rh) {_value /= rh; return *this; }
-
-  private:
-    // Friends
-    friend Force PHYSICSLIBRARY_API operator- (const Force& lh);
-
-    friend Force PHYSICSLIBRARY_API operator+ (const Force& lh, const Force& rh);
-
-    friend Force PHYSICSLIBRARY_API operator- (const Force& lh, const Force& rh);
-    
-    friend Force PHYSICSLIBRARY_API operator*(const class Pressure& lh, const class Area& rh);
-    friend Force PHYSICSLIBRARY_API operator*(const class Area& lh, const class Pressure& rh);
-    friend Force PHYSICSLIBRARY_API operator* (const Force& lh, const double& n);
-    friend Force PHYSICSLIBRARY_API operator* (const double& n, const Force& rh);
-    friend Force PHYSICSLIBRARY_API operator* (const class Stiffness& lh, const class Length& rh);
-    friend Force PHYSICSLIBRARY_API operator* (const class Length& lh, const class Stiffness& rh);
-
-    friend double PHYSICSLIBRARY_API operator/ (const Force& lh, const Force& rh);
-    friend class Pressure PHYSICSLIBRARY_API operator/ (const Force& lh, const class Area& rh);   // defined in Pressure.cpp
-    friend Force PHYSICSLIBRARY_API operator/ (const Force& lh, const double& n);
-    friend class Stiffness PHYSICSLIBRARY_API operator/ (const Force& lh, const class Length& rh);
-
-    friend bool PHYSICSLIBRARY_API operator== (const Force& lh, const Force& rh);
-    friend bool PHYSICSLIBRARY_API operator> (const Force& lh, const Force& rh);
-    friend bool PHYSICSLIBRARY_API operator!= (const Force& lh, const Force& rh);
-    friend bool PHYSICSLIBRARY_API operator< (const Force& lh, const Force& rh);
-    friend bool PHYSICSLIBRARY_API operator>= (const Force& lh, const Force& rh);
-    friend bool PHYSICSLIBRARY_API operator<= (const Force& lh, const Force& rh);
   };
+
+  // Literal operators
+  class Force PHYSICSLIBRARY_API operator"" _N(long double val);
+  class Force PHYSICSLIBRARY_API operator"" _N(unsigned long long val);
+
+  class Force PHYSICSLIBRARY_API operator"" _kN(long double val);
+  class Force PHYSICSLIBRARY_API operator"" _kN(unsigned long long val);
+
+  class Force PHYSICSLIBRARY_API operator"" _lbf(long double val);
+  class Force PHYSICSLIBRARY_API operator"" _lbf(unsigned long long val);
+
+  class Force PHYSICSLIBRARY_API operator"" _kips(long double val);
+  class Force PHYSICSLIBRARY_API operator"" _kips(unsigned long long val);
+
+  Force PHYSICSLIBRARY_API operator- (const Force& lh);
+
+  Force PHYSICSLIBRARY_API operator+ (const Force& lh, const Force& rh);
+
+  Force PHYSICSLIBRARY_API operator- (const Force& lh, const Force& rh);
+
+  Force PHYSICSLIBRARY_API operator*(const class Pressure& lh, const class Area& rh);
+  Force PHYSICSLIBRARY_API operator*(const class Area& lh, const class Pressure& rh);
+  Force PHYSICSLIBRARY_API operator* (const Force& lh, const double& n);
+  Force PHYSICSLIBRARY_API operator* (const double& n, const Force& rh);
+  Force PHYSICSLIBRARY_API operator* (const class Stiffness& lh, const class Length& rh);
+  Force PHYSICSLIBRARY_API operator* (const class Length& lh, const class Stiffness& rh);
+
+  double PHYSICSLIBRARY_API operator/ (const Force& lh, const Force& rh);
+  class Pressure PHYSICSLIBRARY_API operator/ (const Force& lh, const class Area& rh);   // defined in Pressure.cpp
+  Force PHYSICSLIBRARY_API operator/ (const Force& lh, const double& n);
+  class Stiffness PHYSICSLIBRARY_API operator/ (const Force& lh, const class Length& rh);
+
+  bool PHYSICSLIBRARY_API operator== (const Force& lh, const Force& rh);
+  bool PHYSICSLIBRARY_API operator> (const Force& lh, const Force& rh);
+  bool PHYSICSLIBRARY_API operator!= (const Force& lh, const Force& rh);
+  bool PHYSICSLIBRARY_API operator< (const Force& lh, const Force& rh);
+  bool PHYSICSLIBRARY_API operator>= (const Force& lh, const Force& rh);
+  bool PHYSICSLIBRARY_API operator<= (const Force& lh, const Force& rh);
 
   inline Force PHYSICSLIBRARY_API conj(const Force& x) { return x; }
   inline Force PHYSICSLIBRARY_API real(const Force& x) { return x; }

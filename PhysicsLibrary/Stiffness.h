@@ -11,20 +11,6 @@
 
 namespace physics {
 
-  class Stiffness;
-
-  Stiffness PHYSICSLIBRARY_API operator"" _Npm(long double val);
-  Stiffness PHYSICSLIBRARY_API operator"" _Npm(unsigned long long val);
-
-  Stiffness PHYSICSLIBRARY_API operator"" _Npmm(long double val);
-  Stiffness PHYSICSLIBRARY_API operator"" _Npmm(unsigned long long val);
-
-  Stiffness PHYSICSLIBRARY_API operator"" _lbpin(long double val);
-  Stiffness PHYSICSLIBRARY_API operator"" _lbpin(unsigned long long val);
-
-  Stiffness PHYSICSLIBRARY_API operator"" _lbpft(long double val);
-  Stiffness PHYSICSLIBRARY_API operator"" _lbpft(unsigned long long val);
-
   class PHYSICSLIBRARY_API Stiffness : public PhysicsBase {
   public:
     explicit Stiffness(double _newtons_per_meter = 0) : PhysicsBase(_newtons_per_meter) { }
@@ -41,34 +27,45 @@ namespace physics {
     Stiffness& operator-= (const Stiffness& rh) { _value -= rh._value; return *this; }
     Stiffness& operator*= (const double& rh) { _value *= rh; return *this; }
     Stiffness& operator/= (const double& rh) { _value /= rh; return *this; }
-
-  private:
-    // Friends
-    friend Stiffness PHYSICSLIBRARY_API operator- (const Stiffness& lh);
-
-    friend Stiffness PHYSICSLIBRARY_API operator+ (const Stiffness& lh, const Stiffness& rh);
-
-    friend Stiffness PHYSICSLIBRARY_API operator- (const Stiffness& lh, const Stiffness& rh);
-
-    friend Stiffness PHYSICSLIBRARY_API operator* (const Stiffness& lh, const double & n);
-    friend Stiffness PHYSICSLIBRARY_API operator* (const double& n, const Stiffness& rh);
-    friend Stiffness PHYSICSLIBRARY_API operator* (const class Pressure& lh, const class Length& rh);
-    friend Stiffness PHYSICSLIBRARY_API operator* (const class Length& lh, const class Pressure& rh);
-    friend class Force PHYSICSLIBRARY_API operator* (const Stiffness& lh, const class Length& rh);    // defined in Force.cpp
-    friend class Force PHYSICSLIBRARY_API operator* (const class Length& lh, const Stiffness& rh);    // defined in Force.cpp
-    
-    friend Stiffness PHYSICSLIBRARY_API operator/ (const Stiffness& lh, const double& n);
-    friend Stiffness PHYSICSLIBRARY_API operator/ (const class Force& lh, const class Length& rh);
-    friend class Pressure PHYSICSLIBRARY_API operator/ (const Stiffness& lh, const class Length& rh);// defined in Pressure.cpp
-  
-    // Comparison operators
-    friend bool PHYSICSLIBRARY_API  operator== (const Stiffness& lh, const Stiffness& rh);
-    friend bool PHYSICSLIBRARY_API  operator> (const Stiffness& lh, const Stiffness& rh);
-    friend bool PHYSICSLIBRARY_API  operator!= (const Stiffness& lh, const Stiffness& rh);
-    friend bool PHYSICSLIBRARY_API  operator< (const Stiffness& lh, const Stiffness& rh);
-    friend bool PHYSICSLIBRARY_API  operator>= (const Stiffness& lh, const Stiffness& rh);
-    friend bool PHYSICSLIBRARY_API  operator<= (const Stiffness& lh, const Stiffness& rh);
   };
+
+  // Literal operators
+  Stiffness PHYSICSLIBRARY_API operator"" _Npm(long double val);
+  Stiffness PHYSICSLIBRARY_API operator"" _Npm(unsigned long long val);
+
+  Stiffness PHYSICSLIBRARY_API operator"" _Npmm(long double val);
+  Stiffness PHYSICSLIBRARY_API operator"" _Npmm(unsigned long long val);
+
+  Stiffness PHYSICSLIBRARY_API operator"" _lbpin(long double val);
+  Stiffness PHYSICSLIBRARY_API operator"" _lbpin(unsigned long long val);
+
+  Stiffness PHYSICSLIBRARY_API operator"" _lbpft(long double val);
+  Stiffness PHYSICSLIBRARY_API operator"" _lbpft(unsigned long long val);
+
+  Stiffness PHYSICSLIBRARY_API operator- (const Stiffness& lh);
+
+  Stiffness PHYSICSLIBRARY_API operator+ (const Stiffness& lh, const Stiffness& rh);
+
+  Stiffness PHYSICSLIBRARY_API operator- (const Stiffness& lh, const Stiffness& rh);
+
+  Stiffness PHYSICSLIBRARY_API operator* (const Stiffness& lh, const double& n);
+  Stiffness PHYSICSLIBRARY_API operator* (const double& n, const Stiffness& rh);
+  Stiffness PHYSICSLIBRARY_API operator* (const class Pressure& lh, const class Length& rh);
+  Stiffness PHYSICSLIBRARY_API operator* (const class Length& lh, const class Pressure& rh);
+  class Force PHYSICSLIBRARY_API operator* (const Stiffness& lh, const class Length& rh);    // defined in Force.cpp
+  class Force PHYSICSLIBRARY_API operator* (const class Length& lh, const Stiffness& rh);    // defined in Force.cpp
+
+  Stiffness PHYSICSLIBRARY_API operator/ (const Stiffness& lh, const double& n);
+  Stiffness PHYSICSLIBRARY_API operator/ (const class Force& lh, const class Length& rh);
+  class Pressure PHYSICSLIBRARY_API operator/ (const Stiffness& lh, const class Length& rh);// defined in Pressure.cpp
+
+  // Comparison operators
+  bool PHYSICSLIBRARY_API  operator== (const Stiffness& lh, const Stiffness& rh);
+  bool PHYSICSLIBRARY_API  operator> (const Stiffness& lh, const Stiffness& rh);
+  bool PHYSICSLIBRARY_API  operator!= (const Stiffness& lh, const Stiffness& rh);
+  bool PHYSICSLIBRARY_API  operator< (const Stiffness& lh, const Stiffness& rh);
+  bool PHYSICSLIBRARY_API  operator>= (const Stiffness& lh, const Stiffness& rh);
+  bool PHYSICSLIBRARY_API  operator<= (const Stiffness& lh, const Stiffness& rh);
 
   inline Stiffness PHYSICSLIBRARY_API conj(const Stiffness& x) { return x; }
   inline Stiffness PHYSICSLIBRARY_API real(const Stiffness& x) { return x; }

@@ -6,7 +6,7 @@
  *   physics library.
  */
 
-#include "PhysicsExport.h"
+#include "PhysicsBase.h"
 
  // Define some important mathematical constants
 static const long double pi = 3.141592653589793238462643383279;

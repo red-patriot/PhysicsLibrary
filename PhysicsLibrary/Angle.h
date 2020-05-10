@@ -5,7 +5,7 @@
  * A representation of an angular measurement
  */
 
-#include "PhysicsExport.h"
+#include "PhysicsBase.h"
 
 #include <Eigen/Core>
 
@@ -19,9 +19,9 @@ namespace physics {
   Angle PHYSICSLIBRARY_API operator"" _rad(long double val);
   Angle PHYSICSLIBRARY_API operator"" _rad(unsigned long long val);
 
-  class PHYSICSLIBRARY_API Angle {
+  class PHYSICSLIBRARY_API Angle : public PhysicsBase{
   public:
-    explicit Angle(const double& _radians = 0) : radians(_radians) { }  //? Becuase radians are "imaginary" units, maybe this should be implicit?
+    explicit Angle(const double& _radians = 0) : PhysicsBase(_radians) { }  //? Becuase radians are "imaginary" units, maybe this should be implicit?
     Angle(const Angle&) = default;
     ~Angle() = default;
 
@@ -29,37 +29,27 @@ namespace physics {
     double deg() const;
 
     explicit operator double();         //? Becuase radians are "imaginary" units, maybe this should be implicit?
-
-  private:
-    double radians;
-
-    // Friends
-    friend Angle PHYSICSLIBRARY_API operator- (const Angle& rh);
-
-    friend Angle PHYSICSLIBRARY_API operator+ (const Angle& lh, const Angle& rh);
-
-    friend Angle PHYSICSLIBRARY_API operator- (const Angle& lh, const Angle& rh);
-    
-    friend Angle PHYSICSLIBRARY_API operator* (const Angle& lh, const double& n);
-    friend Angle PHYSICSLIBRARY_API operator* (const double& n, const Angle& rh);
-
-    friend Angle PHYSICSLIBRARY_API operator/ (const Angle& lh, const double& n);
-
-    friend Angle PHYSICSLIBRARY_API operator"" _deg(long double val);
-    friend Angle PHYSICSLIBRARY_API operator"" _deg(unsigned long long val);
-
-    friend Angle PHYSICSLIBRARY_API operator"" _rad(long double val);
-    friend Angle PHYSICSLIBRARY_API operator"" _rad(unsigned long long val);
-
-    friend double PHYSICSLIBRARY_API sin(const Angle& a);
-    friend double PHYSICSLIBRARY_API cos(const Angle& a);
-    friend double PHYSICSLIBRARY_API tan(const Angle& a);
-
-    friend Angle PHYSICSLIBRARY_API asin(const double& x);
-    friend Angle PHYSICSLIBRARY_API acos(const double& x);
-    friend Angle PHYSICSLIBRARY_API atan(const double& x);
-    friend Angle PHYSICSLIBRARY_API atan2(const double& x, const double& y);
   };
+  
+  Angle PHYSICSLIBRARY_API operator- (const Angle& rh);
+
+  Angle PHYSICSLIBRARY_API operator+ (const Angle& lh, const Angle& rh);
+
+  Angle PHYSICSLIBRARY_API operator- (const Angle& lh, const Angle& rh);
+
+  Angle PHYSICSLIBRARY_API operator* (const Angle& lh, const double& n);
+  Angle PHYSICSLIBRARY_API operator* (const double& n, const Angle& rh);
+
+  Angle PHYSICSLIBRARY_API operator/ (const Angle& lh, const double& n);
+
+  double PHYSICSLIBRARY_API sin(const Angle& a);
+  double PHYSICSLIBRARY_API cos(const Angle& a);
+  double PHYSICSLIBRARY_API tan(const Angle& a);
+
+  Angle PHYSICSLIBRARY_API asin(const double& x);
+  Angle PHYSICSLIBRARY_API acos(const double& x);
+  Angle PHYSICSLIBRARY_API atan(const double& x);
+  Angle PHYSICSLIBRARY_API atan2(const double& x, const double& y);
 
   inline Angle PHYSICSLIBRARY_API conj(const Angle& x) { return x; }
   inline Angle PHYSICSLIBRARY_API real(const Angle& x) { return x; }

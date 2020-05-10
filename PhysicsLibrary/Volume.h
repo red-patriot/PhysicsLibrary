@@ -8,25 +8,8 @@
 namespace physics {
 
   class SecondMomentOfArea;
-  class Volume;
   class Area;
   class Length;
-
-  // Literal operators
-  Volume PHYSICSLIBRARY_API operator"" _mm3(long double val);
-  Volume PHYSICSLIBRARY_API operator"" _mm3(unsigned long long val);
-
-  Volume PHYSICSLIBRARY_API operator"" _cm3(long double val);
-  Volume PHYSICSLIBRARY_API operator"" _cm3(unsigned long long val);
-
-  Volume PHYSICSLIBRARY_API operator"" _m3(long double val);
-  Volume PHYSICSLIBRARY_API operator"" _m3(unsigned long long val);
-
-  Volume PHYSICSLIBRARY_API operator"" _in3(long double val);
-  Volume PHYSICSLIBRARY_API operator"" _in3(unsigned long long val);
-
-  Volume PHYSICSLIBRARY_API operator"" _ft3(long double val);
-  Volume PHYSICSLIBRARY_API operator"" _ft3(unsigned long long val);
 
   class PHYSICSLIBRARY_API Volume : public PhysicsBase {
   public:
@@ -45,39 +28,53 @@ namespace physics {
     Volume& operator-= (const Volume& rh) { _value -= rh._value; return *this; }
     Volume& operator*= (const double& rh) { _value *= rh; return *this; }
     Volume& operator/= (const double& rh) { _value /= rh; return *this; }
-
-  private:
-    // Friends
-    friend Volume PHYSICSLIBRARY_API operator- (const Volume& lh);
-
-    friend Volume PHYSICSLIBRARY_API operator+ (const Volume& lh, const Volume& rh);
-
-    friend Volume PHYSICSLIBRARY_API operator- (const Volume& lh, const Volume& rh);
-
-    friend Volume PHYSICSLIBRARY_API operator* (const Area& lh, const Length& rh);
-    friend Volume PHYSICSLIBRARY_API operator* (const Length& lh, const Area& rh);
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Volume& lh,
-                                                            const Length& rh);        // defined in MomentofArea.cpp
-    friend SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Length& lh,
-                                                            const Volume& rh);        // defined in MomentofArea.cpp
-    friend Volume PHYSICSLIBRARY_API operator* (const Volume& lh, const double& n);
-    friend Volume PHYSICSLIBRARY_API operator* (const double& n, const Volume& rh);
-
-    friend Volume PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Length& rh);
-    friend Area PHYSICSLIBRARY_API operator/ (const Volume& lh, const Length& rh);    // defined in Area.cpp
-    friend Length PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, 
-                                                const Volume& rh);                    // defined in Length.cpp
-    friend Length PHYSICSLIBRARY_API operator/ (const Volume& lh, const Area& rh);    // defined in Length.cpp
-    friend double PHYSICSLIBRARY_API operator/ (const Volume& lh, const Volume& rh);
-    friend Volume PHYSICSLIBRARY_API operator/ (const Volume& lh, const double& n);
-
-    friend bool PHYSICSLIBRARY_API operator== (const Volume& lh, const Volume& rh);
-    friend bool PHYSICSLIBRARY_API operator> (const Volume& lh, const Volume& rh);
-    friend bool PHYSICSLIBRARY_API operator!= (const Volume& lh, const Volume& rh);
-    friend bool PHYSICSLIBRARY_API operator< (const Volume& lh, const Volume& rh);
-    friend bool PHYSICSLIBRARY_API operator>= (const Volume& lh, const Volume& rh);
-    friend bool PHYSICSLIBRARY_API operator<= (const Volume& lh, const Volume& rh);
   };
+
+  // Literal operators
+  Volume PHYSICSLIBRARY_API operator"" _mm3(long double val);
+  Volume PHYSICSLIBRARY_API operator"" _mm3(unsigned long long val);
+
+  Volume PHYSICSLIBRARY_API operator"" _cm3(long double val);
+  Volume PHYSICSLIBRARY_API operator"" _cm3(unsigned long long val);
+
+  Volume PHYSICSLIBRARY_API operator"" _m3(long double val);
+  Volume PHYSICSLIBRARY_API operator"" _m3(unsigned long long val);
+
+  Volume PHYSICSLIBRARY_API operator"" _in3(long double val);
+  Volume PHYSICSLIBRARY_API operator"" _in3(unsigned long long val);
+
+  Volume PHYSICSLIBRARY_API operator"" _ft3(long double val);
+  Volume PHYSICSLIBRARY_API operator"" _ft3(unsigned long long val);
+
+  Volume PHYSICSLIBRARY_API operator- (const Volume& lh);
+
+  Volume PHYSICSLIBRARY_API operator+ (const Volume& lh, const Volume& rh);
+
+  Volume PHYSICSLIBRARY_API operator- (const Volume& lh, const Volume& rh);
+
+  Volume PHYSICSLIBRARY_API operator* (const Area& lh, const Length& rh);
+  Volume PHYSICSLIBRARY_API operator* (const Length& lh, const Area& rh);
+  SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Volume& lh,
+                                                          const Length& rh);        // defined in MomentofArea.cpp
+  SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Length& lh,
+                                                          const Volume& rh);        // defined in MomentofArea.cpp
+  Volume PHYSICSLIBRARY_API operator* (const Volume& lh, const double& n);
+  Volume PHYSICSLIBRARY_API operator* (const double& n, const Volume& rh);
+
+  Volume PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Length& rh);
+  Area PHYSICSLIBRARY_API operator/ (const Volume& lh, const Length& rh);    // defined in Area.cpp
+  Length PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh,
+                                              const Volume& rh);                    // defined in Length.cpp
+  Length PHYSICSLIBRARY_API operator/ (const Volume& lh, const Area& rh);    // defined in Length.cpp
+  double PHYSICSLIBRARY_API operator/ (const Volume& lh, const Volume& rh);
+  Volume PHYSICSLIBRARY_API operator/ (const Volume& lh, const double& n);
+
+  bool PHYSICSLIBRARY_API operator== (const Volume& lh, const Volume& rh);
+  bool PHYSICSLIBRARY_API operator> (const Volume& lh, const Volume& rh);
+  bool PHYSICSLIBRARY_API operator!= (const Volume& lh, const Volume& rh);
+  bool PHYSICSLIBRARY_API operator< (const Volume& lh, const Volume& rh);
+  bool PHYSICSLIBRARY_API operator>= (const Volume& lh, const Volume& rh);
+  bool PHYSICSLIBRARY_API operator<= (const Volume& lh, const Volume& rh);
 
   inline Volume PHYSICSLIBRARY_API conj(const Volume& x) { return x; }
   inline Volume PHYSICSLIBRARY_API real(const Volume& x) { return x; }
