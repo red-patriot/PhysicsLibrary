@@ -5,7 +5,7 @@
  * A class to represent pressures or anything with units of pressure
  */
 
-#include "PhysicsExport.h"
+#include "PhysicsBase.h"
 
 #include <Eigen/Core>
 
@@ -33,26 +33,26 @@ namespace physics {
   Pressure PHYSICSLIBRARY_API operator"" _ksi (long double val);
   Pressure PHYSICSLIBRARY_API operator"" _ksi (unsigned long long val);
 
-  class PHYSICSLIBRARY_API Pressure {
+  class PHYSICSLIBRARY_API Pressure : public PhysicsBase {
   public:
-    explicit Pressure(double _pascals = 0) : pascals(_pascals) { }
+    explicit Pressure(double _pascals = 0) : PhysicsBase(_pascals) { }
     Pressure(const Pressure&) = default;
     ~Pressure() = default;
 
-    double Pa() const { return pascals; }
-    double kPa() const { return pascals * 0.001; }
-    double MPa() const { return pascals * 0.000'001; }
-    double GPa() const { return pascals * 0.000'000'001; }
+    double Pa() const { return _value; }
+    double kPa() const { return _value * 0.001; }
+    double MPa() const { return _value * 0.000'001; }
+    double GPa() const { return _value * 0.000'000'001; }
 
-    double psi() const { return pascals * 0.000'145'037'737'796'858'691'163; }
-    double ksi() const { return pascals * 0.000'000'145'037'737'796'858'691; }
+    double psi() const { return _value * 0.000'145'037'737'796'858'691'163; }
+    double ksi() const { return _value * 0.000'000'145'037'737'796'858'691; }
 
-    Pressure& operator+= (const Pressure& rh) { pascals += rh.pascals; return *this; }
-    Pressure& operator-= (const Pressure& rh) { pascals -= rh.pascals; return *this; }
+    Pressure& operator+= (const Pressure& rh) { _value += rh._value; return *this; }
+    Pressure& operator-= (const Pressure& rh) { _value -= rh._value; return *this; }
+    Pressure& operator*= (const double& rh) { _value *= rh; return *this; }
+    Pressure& operator/= (const double& rh) { _value /= rh; return *this; }
 
   private:
-    double pascals;
-
     // Friends
     friend Pressure PHYSICSLIBRARY_API operator- (const Pressure& lh);
 
@@ -80,36 +80,15 @@ namespace physics {
     friend bool PHYSICSLIBRARY_API operator< (const Pressure& lh, const Pressure& rh);
     friend bool PHYSICSLIBRARY_API operator>= (const Pressure& lh, const Pressure& rh);
     friend bool PHYSICSLIBRARY_API operator<= (const Pressure& lh, const Pressure& rh);
-
-    // Literal operators
-    friend Pressure PHYSICSLIBRARY_API operator"" _Pa (long double val);
-    friend Pressure PHYSICSLIBRARY_API operator"" _Pa (unsigned long long val);
-
-    friend Pressure PHYSICSLIBRARY_API operator"" _kPa (long double val);
-    friend Pressure PHYSICSLIBRARY_API operator"" _kPa (unsigned long long val);
-
-    friend Pressure PHYSICSLIBRARY_API operator"" _MPa (long double val);
-    friend Pressure PHYSICSLIBRARY_API operator"" _MPa (unsigned long long val);
-
-    friend Pressure PHYSICSLIBRARY_API operator"" _GPa (long double val);
-    friend Pressure PHYSICSLIBRARY_API operator"" _GPa (unsigned long long val);
-
-    friend Pressure PHYSICSLIBRARY_API operator"" _psi (long double val);
-    friend Pressure PHYSICSLIBRARY_API operator"" _psi (unsigned long long val);
-
-    friend Pressure PHYSICSLIBRARY_API operator"" _ksi (long double val);
-    friend Pressure PHYSICSLIBRARY_API operator"" _ksi (unsigned long long val);
   };
 
   /* Pressure^2, this class is only for use in intermetiate operations of equations */
-  class PHYSICSLIBRARY_API Pressure2 {
+  class PHYSICSLIBRARY_API Pressure2 : public PhysicsBase {
   public:
-    Pressure2(double _pascals2 = 0) : pascals2(_pascals2) { }
+    explicit Pressure2(double _pascals2 = 0) : PhysicsBase(_pascals2) { }
     ~Pressure2() = default;
 
   private:
-    double pascals2;
-
     // Friends
     friend Pressure2 PHYSICSLIBRARY_API operator+ (const Pressure2& lh, const Pressure2& rh);
 

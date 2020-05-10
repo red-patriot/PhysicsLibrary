@@ -8,46 +8,46 @@
 namespace physics {
   // Negation operator
   SecondMomentOfArea operator-(const SecondMomentOfArea& lh) {
-    return SecondMomentOfArea(-lh.meters4);
+    return SecondMomentOfArea(-lh.value());
   }
   // Mathematical Operators
     SecondMomentOfArea operator+ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return SecondMomentOfArea(lh.meters4 + rh.meters4);
+    return SecondMomentOfArea(lh.value() + rh.value());
   }
 
   SecondMomentOfArea operator- (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return SecondMomentOfArea(lh.meters4 - rh.meters4);
+    return SecondMomentOfArea(lh.value() - rh.value());
   }
   double operator/ (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return lh.meters4 / rh.meters4;
+    return lh.value() / rh.value();
   }
 
   SecondMomentOfArea operator* (const SecondMomentOfArea& lh, const double& n) {
-    return SecondMomentOfArea(lh.meters4 * n);
+    return SecondMomentOfArea(lh.value() * n);
   }
   SecondMomentOfArea operator* (const double& n, const SecondMomentOfArea& rh) {
     return rh * n;
   }
   SecondMomentOfArea operator* (const Volume& lh, const Length& rh) {
-    return SecondMomentOfArea(lh.meters3 * rh.meters);
+    return SecondMomentOfArea(lh.value() * rh.value());
   }
   SecondMomentOfArea operator* (const Length& lh, const Volume& rh) {
     return rh * lh;
   }
   SecondMomentOfArea operator* (const Area& lh, const Area& rh) {
-    return SecondMomentOfArea(lh.meters2 * rh.meters2);
+    return SecondMomentOfArea(lh.value() * rh.value());
   }
 
   SecondMomentOfArea operator/ (const SecondMomentOfArea& lh, const double& n) {
-    return SecondMomentOfArea(lh.meters4 / n);
+    return SecondMomentOfArea(lh.value() / n);
   }
 
   // Comparison Operators
   bool operator== (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return fuzzy_equals(lh.meters4, rh.meters4);
+    return fuzzy_equals(lh.value(), rh.value());
   }
   bool operator> (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
-    return fuzzy_greater(lh.meters4, rh.meters4);
+    return fuzzy_greater(lh.value(), rh.value());
   }
   bool operator!= (const SecondMomentOfArea& lh, const SecondMomentOfArea& rh) {
     return !(lh == rh);

@@ -9,46 +9,46 @@
 namespace physics {
   // Negation operator
   Area operator-(const Area& lh) {
-    return Area(-lh.meters2);
+    return Area(-lh.value());
   }
   // Mathematical Operators
   Area operator+ (const Area& lh, const Area& rh) {
-    return Area(lh.meters2 + rh.meters2);
+    return Area(lh.value() + rh.value());
   }
 
   Area operator- (const Area& lh, const Area& rh) {
-    return Area(lh.meters2 - rh.meters2);
+    return Area(lh.value() - rh.value());
   }
 
   Area operator* (const Length& lh, const Length& rh) {
-    return Area(lh.meters * rh.meters);
+    return Area(lh.value() * rh.value());
   }
   Area operator* (const Area& lh, const double& n) {
-    return Area(lh.meters2 * n);
+    return Area(lh.value() * n);
   }
   Area operator* (const double& n, const Area& rh) {
     return rh *n;
   }
 
   Area operator/ (const Volume& lh, const Length& rh) {
-    return Area(lh.meters3 / rh.meters);
+    return Area(lh.value() / rh.value());
   }
   Area operator/ (const SecondMomentOfArea& lh, const Area& rh) {
-    return Area(lh.meters4 / rh.meters2);
+    return Area(lh.value() / rh.value());
   }
   double operator/ (const Area& lh, const Area& rh) {
-    return lh.meters2 / rh.meters2;
+    return lh.value() / rh.value();
   }
   Area operator/ (const Area& lh, const double& n) {
-    return Area(lh.meters2 / n);
+    return Area(lh.value() / n);
   }
 
   // Comparison Operators
   bool operator== (const Area& lh, const Area& rh) {
-    return fuzzy_equals(lh.meters2, rh.meters2);
+    return fuzzy_equals(lh.value(), rh.value());
   }
   bool operator> (const Area& lh, const Area& rh) {
-    return fuzzy_greater(lh.meters2, rh.meters2);
+    return fuzzy_greater(lh.value(), rh.value());
   }
   bool operator!= (const Area& lh, const Area& rh) {
     return !(lh == rh);

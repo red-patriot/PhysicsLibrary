@@ -1,7 +1,7 @@
 #ifndef Length_h_INCLUDED
 #define Length_h_INCLUDED
 
-#include "PhysicsExport.h"
+#include "PhysicsBase.h"
 
 #include <Eigen/Core>
 
@@ -35,28 +35,28 @@ namespace physics {
   Length PHYSICSLIBRARY_API  operator"" _mi (unsigned long long val);
 
 
-  class PHYSICSLIBRARY_API Length {
+  class PHYSICSLIBRARY_API Length : PhysicsBase {
   public:
-    explicit Length(double _meters = 0) : meters(_meters) { }
+    explicit Length(double _meters = 0) : PhysicsBase(_meters) { }
 
     Length(const Length&) = default;
     ~Length() = default;
 
-    double mm() const { return meters * 1000; }
-    double cm() const { return meters * 100; }
-    double m() const { return meters; }
-    double km() const { return meters * 0.001; }
+    double mm() const { return _value * 1000; }
+    double cm() const { return _value * 100; }
+    double m() const { return _value; }
+    double km() const { return _value * 0.001; }
 
-    double in() const { return meters * (100/2.54); }
-    double ft() const { return meters * (100/(30.48)); }
-    double mi() const { return meters * (100/(160'934.4)); }
+    double in() const { return _value * (100/2.54); }
+    double ft() const { return _value * (100/(30.48)); }
+    double mi() const { return _value * (100/(160'934.4)); }
 
-    Length& operator+= (const Length& rh) { meters += rh.meters; return *this; }
-    Length& operator-= (const Length& rh) { meters -= rh.meters; return *this; }
+    Length& operator+= (const Length& rh) { _value += rh._value; return *this; }
+    Length& operator-= (const Length& rh) { _value -= rh._value; return *this; }
+    Length& operator*= (const double& rh) { _value *= rh; return *this; }
+    Length& operator/= (const double& rh) { _value /= rh; return *this; }
 
   private:
-    double meters;
-
     // Friends
     friend Length PHYSICSLIBRARY_API operator- (const Length& lh);
 
@@ -95,28 +95,6 @@ namespace physics {
     friend bool PHYSICSLIBRARY_API  operator< (const Length& lh, const Length& rh);
     friend bool PHYSICSLIBRARY_API  operator>= (const Length& lh, const Length& rh);
     friend bool PHYSICSLIBRARY_API  operator<= (const Length& lh, const Length& rh);
-
-    // Literal operators
-    friend Length PHYSICSLIBRARY_API  operator"" _mm (long double val);
-    friend Length PHYSICSLIBRARY_API  operator"" _mm (unsigned long long val);
-
-    friend Length PHYSICSLIBRARY_API  operator"" _cm (long double val);
-    friend Length PHYSICSLIBRARY_API  operator"" _cm (unsigned long long val);
-
-    friend Length PHYSICSLIBRARY_API  operator"" _m (long double val);
-    friend Length PHYSICSLIBRARY_API  operator"" _m (unsigned long long val);
-
-    friend Length PHYSICSLIBRARY_API  operator"" _km (long double val);
-    friend Length PHYSICSLIBRARY_API  operator"" _km (unsigned long long val);
-
-    friend Length PHYSICSLIBRARY_API  operator"" _in (long double val);
-    friend Length PHYSICSLIBRARY_API  operator"" _in (unsigned long long val);
-
-    friend Length PHYSICSLIBRARY_API  operator"" _ft (long double val);
-    friend Length PHYSICSLIBRARY_API  operator"" _ft (unsigned long long val);
-
-    friend Length PHYSICSLIBRARY_API  operator"" _mi (long double val);
-    friend Length PHYSICSLIBRARY_API  operator"" _mi (unsigned long long val);
   };
 
   inline Length PHYSICSLIBRARY_API conj(const Length& x) { return x; }

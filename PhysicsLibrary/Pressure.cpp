@@ -15,45 +15,45 @@ namespace physics {
 
   // Negation operator
   Pressure operator- (const Pressure& lh) {
-    return Pressure(-lh.pascals);
+    return Pressure(-lh.value());
   }
 
   // Mathematical Operators
   Pressure operator+ (const Pressure& lh, const Pressure& rh) {
-    return Pressure(lh.pascals + rh.pascals);
+    return Pressure(lh.value() + rh.value());
   }
 
   Pressure operator- (const Pressure& lh, const Pressure& rh) {
-    return Pressure(lh.pascals - rh.pascals);
+    return Pressure(lh.value() - rh.value());
   }
 
   Pressure operator* (const Pressure& lh, const double& n) {
-    return Pressure(lh.pascals * n);
+    return Pressure(lh.value() * n);
   }
   Pressure operator* (const double& n, const Pressure& rh) {
     return rh * n;
   }
   Pressure physics::operator/(const Stiffness& lh, const Length& rh) {
-    return Pressure(lh.newtons_per_meter / rh.meters);
+    return Pressure(lh.value() / rh.value());
   }
 
   Pressure operator/ (const Force& lh, const Area& rh) {
-    return Pressure(lh.newtons / rh.meters2);
+    return Pressure(lh.value() / rh.value());
   }
 
   double operator/ (const Pressure& lh, const Pressure& rh) {
-    return lh.pascals / rh.pascals;
+    return lh.value() / rh.value();
   }
   Pressure operator/ (const Pressure& lh, const double& n) {
-    return Pressure(lh.pascals / n);
+    return Pressure(lh.value() / n);
   }
 
   // Comparison Operators
   bool operator== (const Pressure& lh, const Pressure& rh) {
-    return fuzzy_equals(lh.pascals, rh.pascals);
+    return fuzzy_equals(lh.value(), rh.value());
   }
   bool operator> (const Pressure& lh, const Pressure& rh) {
-    return fuzzy_greater(lh.pascals, rh.pascals);
+    return fuzzy_greater(lh.value(), rh.value());
   }
 
   bool operator!= (const Pressure& lh, const Pressure& rh) {
@@ -118,19 +118,19 @@ namespace physics {
   }
 
   Pressure2 operator+(const Pressure2& lh, const Pressure2& rh) {
-    return Pressure2(lh.pascals2 + rh.pascals2);
+    return Pressure2(lh.value() + rh.value());
   }
 
   Pressure2 operator-(const Pressure2& lh, const Pressure2& rh) {
-    return Pressure2(lh.pascals2 - rh.pascals2);
+    return Pressure2(lh.value() - rh.value());
   }
 
   Pressure2 operator* (const Pressure& lh, const Pressure& rh) {
-    return Pressure2(lh.pascals * rh.pascals);
+    return Pressure2(lh.value() * rh.value());
   }
 
   Pressure2 operator*(const Pressure2& lh, const double& n) {
-    return Pressure2(lh.pascals2 * n);
+    return Pressure2(lh.value() * n);
   }
 
   Pressure2 operator*(const double& n, const Pressure2& rh) {
@@ -138,15 +138,15 @@ namespace physics {
   }
 
   Pressure2 operator/(const Pressure2& lh, const double& n) {
-    return Pressure2(lh.pascals2 / n);
+    return Pressure2(lh.value() / n);
   }
 
   Pressure operator/(const Pressure2& lh, const Pressure& rh) {
-    return Pressure(lh.pascals2 / rh.pascals);
+    return Pressure(lh.value() / rh.value());
   }
 
   double operator/(const Pressure2& lh, const Pressure2& rh) {
-    return lh.pascals2 / rh.pascals2;
+    return lh.value() / rh.value();
   }
 
 }; // namespace physics

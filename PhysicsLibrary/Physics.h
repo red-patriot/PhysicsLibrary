@@ -3,9 +3,8 @@
 
 /* Include the entire physics library */
 
-#include "PhysicsExport.h"
-
-// Mathematics header
+// Basic header
+#include "PhysicsMath.h"
 #include "PhysicsMath.h"
 
 // Force headers

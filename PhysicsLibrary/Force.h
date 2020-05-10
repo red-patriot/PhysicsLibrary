@@ -1,7 +1,7 @@
 #ifndef Force_h_INCLUDED
 #define Force_h_INCLUDED
 
-#include "PhysicsExport.h"
+#include "PhysicsBase.h"
 
 #include <Eigen/Core>
 
@@ -20,24 +20,24 @@ namespace physics {
   class Force PHYSICSLIBRARY_API operator"" _kips(long double val);
   class Force PHYSICSLIBRARY_API operator"" _kips(unsigned long long val);
 
-  class PHYSICSLIBRARY_API Force {
+  class PHYSICSLIBRARY_API Force : public PhysicsBase {
   public:
-    explicit Force(double _newtons=0) : newtons(_newtons) { }
+    explicit Force(double _newtons=0) : PhysicsBase(_newtons) { }
     Force(const Force&) = default;
     ~Force() = default;
 
-    double N() const { return newtons; }
-    double kN() const { return newtons * 0.001; }
+    double N() const { return _value; }
+    double kN() const { return _value * 0.001; }
 
-    double lbf() const { return newtons * 0.224808943099711; }
-    double kips() const { return newtons * 0.000224808943099711;  }
+    double lbf() const { return _value * 0.224808943099711; }
+    double kips() const { return _value * 0.000224808943099711;  }
 
-    Force& operator+= (const Force& rh) { newtons += rh.newtons; return *this; }
-    Force& operator-= (const Force& rh) { newtons -= rh.newtons; return *this; }
+    Force& operator+= (const Force& rh) { _value += rh._value; return *this; }
+    Force& operator-= (const Force& rh) { _value -= rh._value; return *this; }
+    Force& operator*= (const double& rh) { _value *= rh; return *this; }
+    Force& operator/= (const double& rh) {_value /= rh; return *this; }
 
   private:
-    double newtons;
-
     // Friends
     friend Force PHYSICSLIBRARY_API operator- (const Force& lh);
 
@@ -63,19 +63,6 @@ namespace physics {
     friend bool PHYSICSLIBRARY_API operator< (const Force& lh, const Force& rh);
     friend bool PHYSICSLIBRARY_API operator>= (const Force& lh, const Force& rh);
     friend bool PHYSICSLIBRARY_API operator<= (const Force& lh, const Force& rh);
-
-    // Literal operators
-    friend Force PHYSICSLIBRARY_API operator"" _N(long double val);
-    friend Force PHYSICSLIBRARY_API operator"" _N(unsigned long long val);
-
-    friend Force PHYSICSLIBRARY_API operator"" _kN(long double val);
-    friend Force PHYSICSLIBRARY_API operator"" _kN(unsigned long long val);
-
-    friend Force PHYSICSLIBRARY_API operator"" _lbf(long double val);
-    friend Force PHYSICSLIBRARY_API operator"" _lbf(unsigned long long val);
-
-    friend Force PHYSICSLIBRARY_API operator"" _kips(long double val);
-    friend Force PHYSICSLIBRARY_API operator"" _kips(unsigned long long val);
   };
 
   inline Force PHYSICSLIBRARY_API conj(const Force& x) { return x; }

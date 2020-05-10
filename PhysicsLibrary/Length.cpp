@@ -9,46 +9,46 @@
 namespace physics {
   // Negation operator
   Length operator-(const Length& lh) {
-    return Length(-lh.meters);
+    return Length(-lh.value());
   }
   // Mathematical Operators
   Length operator+ (const Length& lh, const Length& rh) {
-    return Length(lh.meters + rh.meters);
+    return Length(lh.value() + rh.value());
   }
 
   Length operator- (const Length& lh, const Length& rh) {
-    return Length(lh.meters - rh.meters);
+    return Length(lh.value() - rh.value());
   }
 
   Length operator* (const Length& lh, const double& n) {
-    return Length(lh.meters * n);
+    return Length(lh.value() * n);
   }
   Length operator* (const double& n, const Length& rh) {
     return rh * n;
   }
   Length operator/ (const Length& lh, const double& n) {
-    return Length(lh.meters / n);
+    return Length(lh.value() / n);
   }
 
   double operator/ (const Length& lh, const Length& rh) {
-    return lh.meters / rh.meters;
+    return lh.value() / rh.value();
   }
   Length operator/ (const Area& lh, const Length& rh) {
-    return Length(lh.meters2 / rh.meters);
+    return Length(lh.value() / rh.value());
   }
   Length operator/ (const Volume& lh, const Area& rh) {
-    return Length(lh.meters3 / rh.meters2);
+    return Length(lh.value() / rh.value());
   }
   Length operator/ (const SecondMomentOfArea& lh, const Volume& rh) {
-    return Length(lh.meters4 / rh.meters3);
+    return Length(lh.value() / rh.value());
   }
 
   // Comparison operators
   bool operator== (const Length& lh, const Length& rh) {
-    return fuzzy_equals(lh.meters, rh.meters);
+    return fuzzy_equals(lh.value(), rh.value());
   }
   bool operator> (const Length& lh, const Length& rh) {
-    return fuzzy_greater(lh.meters, rh.meters);
+    return fuzzy_greater(lh.value(), rh.value());
   }
   bool operator!= (const Length& lh, const Length& rh) {
     return !(lh == rh);

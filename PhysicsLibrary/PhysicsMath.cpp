@@ -59,7 +59,7 @@ namespace physics {
   }
 
   Pressure sqrt(const Pressure2& r) {
-    return Pressure(std::sqrt(r.pascals2));
+    return Pressure(std::sqrt(r.value()));
   }
 
   Angle abs(const Angle& x) {

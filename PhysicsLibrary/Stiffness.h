@@ -5,7 +5,7 @@
  * Simulation of a linear stiffness in force per unit length
  */
 
-#include "PhysicsExport.h"
+#include "PhysicsBase.h"
 
 #include <Eigen/Core>
 
@@ -25,24 +25,24 @@ namespace physics {
   Stiffness PHYSICSLIBRARY_API operator"" _lbpft(long double val);
   Stiffness PHYSICSLIBRARY_API operator"" _lbpft(unsigned long long val);
 
-  class PHYSICSLIBRARY_API Stiffness {
+  class PHYSICSLIBRARY_API Stiffness : public PhysicsBase {
   public:
-    explicit Stiffness(double _newtons_per_meter = 0) : newtons_per_meter(_newtons_per_meter) { }
+    explicit Stiffness(double _newtons_per_meter = 0) : PhysicsBase(_newtons_per_meter) { }
     Stiffness(const Stiffness&) = default;
     ~Stiffness() = default;
 
-    double Npm() const { return newtons_per_meter; }
-    double Npmm() const { return newtons_per_meter * 0.001; }
+    double Npm() const { return _value; }
+    double Npmm() const { return _value * 0.001; }
     
-    double lbpin() const { return newtons_per_meter * 0.00571014715473264626; }
-    double lbpft() const { return newtons_per_meter * 0.06852176585679175519; }
+    double lbpin() const { return _value * 0.00571014715473264626; }
+    double lbpft() const { return _value * 0.06852176585679175519; }
 
-    Stiffness& operator+= (const Stiffness& rh) { newtons_per_meter += rh.newtons_per_meter; return *this; }
-    Stiffness& operator-= (const Stiffness& rh) { newtons_per_meter -= rh.newtons_per_meter; return *this; }
+    Stiffness& operator+= (const Stiffness& rh) { _value += rh._value; return *this; }
+    Stiffness& operator-= (const Stiffness& rh) { _value -= rh._value; return *this; }
+    Stiffness& operator*= (const double& rh) { _value *= rh; return *this; }
+    Stiffness& operator/= (const double& rh) { _value /= rh; return *this; }
 
   private:
-    double newtons_per_meter;
-
     // Friends
     friend Stiffness PHYSICSLIBRARY_API operator- (const Stiffness& lh);
 
@@ -68,19 +68,6 @@ namespace physics {
     friend bool PHYSICSLIBRARY_API  operator< (const Stiffness& lh, const Stiffness& rh);
     friend bool PHYSICSLIBRARY_API  operator>= (const Stiffness& lh, const Stiffness& rh);
     friend bool PHYSICSLIBRARY_API  operator<= (const Stiffness& lh, const Stiffness& rh);
-
-    // Literal operators
-    friend Stiffness PHYSICSLIBRARY_API operator"" _Npm(long double val);
-    friend Stiffness PHYSICSLIBRARY_API operator"" _Npm(unsigned long long val);
-
-    friend Stiffness PHYSICSLIBRARY_API operator"" _Npmm(long double val);
-    friend Stiffness PHYSICSLIBRARY_API operator"" _Npmm(unsigned long long val);
-
-    friend Stiffness PHYSICSLIBRARY_API operator"" _lbpin(long double val);
-    friend Stiffness PHYSICSLIBRARY_API operator"" _lbpin(unsigned long long val);
-
-    friend Stiffness PHYSICSLIBRARY_API operator"" _lbpft(long double val);
-    friend Stiffness PHYSICSLIBRARY_API operator"" _lbpft(unsigned long long val);
   };
 
   inline Stiffness PHYSICSLIBRARY_API conj(const Stiffness& x) { return x; }

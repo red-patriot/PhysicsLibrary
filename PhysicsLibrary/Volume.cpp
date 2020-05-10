@@ -9,46 +9,46 @@
 namespace physics {
   // Negation operator
   Volume operator-(const Volume& lh) {
-    return Volume(-lh.meters3);
+    return Volume(-lh.value());
   }
   // Mathematical Operators
   Volume operator+ (const Volume& lh, const Volume& rh) {
-    return Volume(lh.meters3 + rh.meters3);
+    return Volume(lh.value() + rh.value());
   }
 
   Volume operator- (const Volume& lh, const Volume& rh) {
-    return Volume(lh.meters3 - rh.meters3);
+    return Volume(lh.value() - rh.value());
   }
 
   Volume operator* (const Area& lh, const Length& rh) {
-    return Volume(lh.meters2 * rh.meters);
+    return Volume(lh.value() * rh.value());
   }
   Volume operator* (const Length& lh, const Area& rh) {
     return rh * lh;
   }
   Volume operator* (const Volume& lh, const double& n) {
-    return Volume(lh.meters3 * n);
+    return Volume(lh.value() * n);
   }
   Volume operator* (const double& n, const Volume& rh) {
     return rh * n;
   }
 
   Volume  operator/ (const SecondMomentOfArea& lh, const Length& rh) {
-    return Volume(lh.meters4 / rh.meters);
+    return Volume(lh.value() / rh.value());
   }
   double operator/ (const Volume& lh, const Volume& rh) {
-    return lh.meters3 / rh.meters3;
+    return lh.value() / rh.value();
   }
   Volume operator/ (const Volume& lh, const double& n) {
-    return Volume(lh.meters3 / n);
+    return Volume(lh.value() / n);
   }
 
   // Comparison Operators
   bool operator== (const Volume& lh, const Volume& rh) {
-    return fuzzy_equals(lh.meters3, rh.meters3);
+    return fuzzy_equals(lh.value(), rh.value());
   }
   bool operator> (const Volume& lh, const Volume& rh) {
-    return fuzzy_greater(lh.meters3, rh.meters3);
+    return fuzzy_greater(lh.value(), rh.value());
   }
   bool operator!= (const Volume& lh, const Volume& rh) {
     return !(lh == rh);

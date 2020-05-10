@@ -9,19 +9,19 @@ namespace physics {
   Stiffness PHYSICSLIBRARY_API operator- (const Stiffness& lh);
 
   Stiffness operator-(const Stiffness& lh) {
-    return Stiffness(-lh.newtons_per_meter);
+    return Stiffness(-lh.value());
   }
 
   Stiffness operator+(const Stiffness& lh, const Stiffness& rh) {
-    return Stiffness(lh.newtons_per_meter + rh.newtons_per_meter);
+    return Stiffness(lh.value() + rh.value());
   }
 
   Stiffness operator-(const Stiffness& lh, const Stiffness& rh) {
-    return Stiffness(lh.newtons_per_meter - rh.newtons_per_meter);
+    return Stiffness(lh.value() - rh.value());
   }
 
   Stiffness operator*(const Stiffness& lh, const double& n) {
-    return Stiffness(lh.newtons_per_meter * n);
+    return Stiffness(lh.value() * n);
   }
 
   Stiffness operator*(const double& n, const Stiffness& rh) {
@@ -29,7 +29,7 @@ namespace physics {
   }
 
   Stiffness operator*(const Pressure& lh, const Length& rh) {
-    return Stiffness(lh.pascals * rh.meters);
+    return Stiffness(lh.value() * rh.value());
   }
 
   Stiffness operator*(const Length& lh, const Pressure& rh) {
@@ -37,19 +37,19 @@ namespace physics {
   }
 
   Stiffness operator/(const Stiffness& lh, const double& n) {
-    return Stiffness(lh.newtons_per_meter / n);
+    return Stiffness(lh.value() / n);
   }
 
   Stiffness operator/(const Force& lh, const Length& rh) {
-    return Stiffness(lh.newtons / rh.meters);
+    return Stiffness(lh.value() / rh.value());
   }
 
   bool operator==(const Stiffness& lh, const Stiffness& rh) {
-    return fuzzy_equals(lh.newtons_per_meter, rh.newtons_per_meter);
+    return fuzzy_equals(lh.value(), rh.value());
   }
 
   bool operator>(const Stiffness& lh, const Stiffness& rh) {
-    return fuzzy_greater(lh.newtons_per_meter, rh.newtons_per_meter);
+    return fuzzy_greater(lh.value(), rh.value());
   }
 
   bool operator!=(const Stiffness& lh, const Stiffness& rh) {
