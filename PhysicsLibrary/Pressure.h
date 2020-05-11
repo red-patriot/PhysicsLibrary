@@ -14,8 +14,16 @@ namespace physics {
   class Pressure;
   class Pressure2;
 
+  /**
+   * \class Pressure A force distributed over an area
+   */
   class PHYSICSLIBRARY_API Pressure : public PhysicsBase {
   public:
+    /**
+     * \brief Construct a pressure
+     * 
+     * \param _pascals the measure of pressure in Pascals
+     */
     explicit Pressure(double _pascals = 0) : PhysicsBase(_pascals) { }
     Pressure(const Pressure&) = default;
     ~Pressure() = default;
@@ -84,7 +92,8 @@ namespace physics {
   inline Pressure PHYSICSLIBRARY_API real(const Pressure& x) { return x; }
   inline Pressure PHYSICSLIBRARY_API imag(const Pressure&) { return 0_Pa; }
 
-  /* Pressure^2, this class is only for use in intermetiate operations of equations */
+  /* Pressure^2, this class is only for use in intermetiate operations of 
+     equations, so it has limited functionality. */
   class PHYSICSLIBRARY_API Pressure2 : public PhysicsBase {
   public:
     explicit Pressure2(double _pascals2 = 0) : PhysicsBase(_pascals2) { }

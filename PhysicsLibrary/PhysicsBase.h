@@ -7,10 +7,13 @@
 #   define PHYSICSLIBRARY_API __declspec(dllimport)
 #endif
 
+/**
+ * \class PhysicsBase An internal base class for any physics object
+ */
 class PhysicsBase { 
 public:
   explicit PhysicsBase(const double n) : _value(n) { }
-  virtual ~PhysicsBase() { }
+  virtual ~PhysicsBase() = default;
 
   double value() const { return _value; }
 

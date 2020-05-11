@@ -11,8 +11,16 @@
 
 namespace physics {
 
+  /**
+   * \class Stiffness a linear resistance to deformation measured in force/length
+   */
   class PHYSICSLIBRARY_API Stiffness : public PhysicsBase {
   public:
+    /**
+     * \brief Construct a stiffness
+     * 
+     * \param _newtons_per_meter the measure of stiffness in Newtons/meter
+     */
     explicit Stiffness(double _newtons_per_meter = 0) : PhysicsBase(_newtons_per_meter) { }
     Stiffness(const Stiffness&) = default;
     ~Stiffness() = default;

@@ -14,8 +14,16 @@ namespace physics {
   // First moment of Area and Volume have the same units, so define them as "equal" here
   using FirstMomentOfArea = Volume;
 
+  /**
+   * \class SecondMomentOfArea A 4D measure of the Area Moment of Inertia of a geometry
+   */
   class PHYSICSLIBRARY_API SecondMomentOfArea : public PhysicsBase {
   public:
+    /**
+     * \brief Construct a SecondMomentOfArea
+     * 
+     * \param _meters4 the measure of the area moment of inertia in meters^4
+     */
     explicit SecondMomentOfArea(const double& _meters4 = 0) : PhysicsBase(_meters4) { }
     SecondMomentOfArea(const SecondMomentOfArea&) = default;
     ~SecondMomentOfArea() = default;

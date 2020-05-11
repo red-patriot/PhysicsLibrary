@@ -11,16 +11,16 @@
 
 namespace physics {
 
-  class Angle;
-
-  Angle PHYSICSLIBRARY_API operator"" _deg(long double val);
-  Angle PHYSICSLIBRARY_API operator"" _deg(unsigned long long val);
-
-  Angle PHYSICSLIBRARY_API operator"" _rad(long double val);
-  Angle PHYSICSLIBRARY_API operator"" _rad(unsigned long long val);
-
+  /**
+   * \class Angle The geometry formed by two non-colinear planar lines. 
+   */
   class PHYSICSLIBRARY_API Angle : public PhysicsBase{
   public:
+    /**
+     * \brief Construct an Angle
+     * 
+     * \param _radians The measure of the angle in radians
+     */
     explicit Angle(const double& _radians = 0) : PhysicsBase(_radians) { }  //? Becuase radians are "imaginary" units, maybe this should be implicit?
     Angle(const Angle&) = default;
     ~Angle() = default;
@@ -30,6 +30,12 @@ namespace physics {
 
     explicit operator double();         //? Becuase radians are "imaginary" units, maybe this should be implicit?
   };
+
+  Angle PHYSICSLIBRARY_API operator"" _deg(long double val);
+  Angle PHYSICSLIBRARY_API operator"" _deg(unsigned long long val);
+
+  Angle PHYSICSLIBRARY_API operator"" _rad(long double val);
+  Angle PHYSICSLIBRARY_API operator"" _rad(unsigned long long val);
   
   Angle PHYSICSLIBRARY_API operator- (const Angle& rh);
 

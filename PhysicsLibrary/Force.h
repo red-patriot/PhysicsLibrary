@@ -7,10 +7,16 @@
 
 namespace physics {
 
-
-
+  /**
+   * \class Force The magnitude of a force in space
+   */
   class PHYSICSLIBRARY_API Force : public PhysicsBase {
   public:
+    /**
+     * \brief Construct a Force
+     * 
+     * \param _newtons The magnitude of the force in Newtons
+     */
     explicit Force(double _newtons=0) : PhysicsBase(_newtons) { }
     Force(const Force&) = default;
     ~Force() = default;

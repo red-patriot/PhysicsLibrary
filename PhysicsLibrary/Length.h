@@ -11,10 +11,17 @@ namespace physics {
   class Volume;
   class Area;
 
+  /**
+   * \class Length A 1D geometry
+   */
   class PHYSICSLIBRARY_API Length : public PhysicsBase {
   public:
+    /**
+     * \brief Construct a Length
+     * 
+     * \param _meters the measure of the length in meters
+     */
     explicit Length(double _meters = 0) : PhysicsBase(_meters) { }
-
     Length(const Length&) = default;
     ~Length() = default;
 

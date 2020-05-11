@@ -9,11 +9,18 @@ namespace physics {
 
   class SecondMomentOfArea;
   class Volume;
-  class Area;
   class Length;
 
+  /**
+   * \class Area A 2D geometry
+   */
   class PHYSICSLIBRARY_API Area : public PhysicsBase {
   public:
+    /**
+     * \brief Construct an Area
+     * 
+     * \param _meters2 The meaasure of the area in meters^2
+     */
     explicit Area(const double _meters2 = 0) : PhysicsBase(_meters2) { }
     Area(const Area&) = default;
     ~Area() = default;
