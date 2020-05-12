@@ -156,6 +156,7 @@
     <ClInclude Include="Force.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Length.h" />
+    <ClInclude Include="Mass.h" />
     <ClInclude Include="MomentOfArea.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="pch.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="PhysicsMath.h" />
     <ClInclude Include="Pressure.h" />
     <ClInclude Include="Stiffness.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="Volume.h" />
   </ItemGroup>
   <ItemGroup>
@@ -174,6 +176,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Force.cpp" />
     <ClCompile Include="Length.cpp" />
+    <ClCompile Include="Mass.cpp" />
     <ClCompile Include="MomentOfArea.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -187,6 +190,7 @@
     </ClCompile>
     <ClCompile Include="Pressure.cpp" />
     <ClCompile Include="Stiffness.cpp" />
+    <ClCompile Include="Time.cpp" />
     <ClCompile Include="Volume.cpp" />
   </ItemGroup>
   <ItemGroup>

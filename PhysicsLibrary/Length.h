@@ -40,7 +40,6 @@ namespace physics {
     Length& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  // Literal operators
   Length PHYSICSLIBRARY_API  operator"" _mm (long double val);
   Length PHYSICSLIBRARY_API  operator"" _mm (unsigned long long val);
 

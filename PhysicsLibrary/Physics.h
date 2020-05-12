@@ -19,4 +19,10 @@
 #include "Volume.h"
 #include "MomentOfArea.h"
 
+// Mass header
+#include "Mass.h"
+
+// Time header
+#include "TIme.h"
+
 #endif
