@@ -24,8 +24,7 @@ namespace physics {
     double g() const { return _value * 1000; }
     double kg() const { return _value; }
 
-    double lbm() const { return 0; }
-    double slug() const { return 0; }
+    double slug() const { return _value * 0.06852176556196105; }
   };
 
   Mass PHYSICSLIBRARY_API operator"" _g (long double val);
@@ -33,9 +32,6 @@ namespace physics {
 
   Mass PHYSICSLIBRARY_API operator"" _kg (long double val);
   Mass PHYSICSLIBRARY_API operator"" _kg (unsigned long long val);
-
-  Mass PHYSICSLIBRARY_API operator"" _lbm (long double val);
-  Mass PHYSICSLIBRARY_API operator"" _lbm (unsigned long long val);
 
   Mass PHYSICSLIBRARY_API operator"" _slug (long double val);
   Mass PHYSICSLIBRARY_API operator"" _slug (unsigned long long val);
@@ -58,6 +54,34 @@ namespace physics {
   bool PHYSICSLIBRARY_API operator>= (const Mass& lh, const Mass& rh);
   bool PHYSICSLIBRARY_API operator<= (const Mass& lh, const Mass& rh);
 
+  inline Mass PHYSICSLIBRARY_API conj(const Mass& x) { return x; }
+  inline Mass PHYSICSLIBRARY_API real(const Mass& x) { return x; }
+  inline Mass PHYSICSLIBRARY_API imag(const Mass& x) { return 0_kg; }
+
 };  // namespace physics
+
+/* Integration with Eigen */
+namespace Eigen {
+
+  template<> struct NumTraits<physics::Mass> : NumTraits<double> {
+    typedef physics::Mass Real;
+    typedef physics::Mass NonInteger;
+    typedef physics::Mass Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
+
+using physics::operator"" _g;       using physics::operator"" _kg;
+using physics::operator"" _slug;
 
 #endif
