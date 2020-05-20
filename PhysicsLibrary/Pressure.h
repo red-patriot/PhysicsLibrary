@@ -67,19 +67,14 @@ namespace physics {
 
   Pressure PHYSICSLIBRARY_API operator- (const Pressure& lh, const Pressure& rh);
 
-  Pressure2 PHYSICSLIBRARY_API operator* (const Pressure& lh, const Pressure& rh);
   Pressure PHYSICSLIBRARY_API operator* (const Pressure& lh, const double& n);
   Pressure PHYSICSLIBRARY_API operator* (const double& n, const Pressure& rh);
-  class Force PHYSICSLIBRARY_API operator*(const Pressure& lh, const class Area& rh);  // defined in Force.cpp
-  class Force PHYSICSLIBRARY_API operator*(const class Area& lh, const Pressure& rh);  // defined in Force.cpp
-  class Stiffness PHYSICSLIBRARY_API operator* (const class Pressure& lh, const class Length& rh); // defined in Stiffness.cpp
-  class Stiffness PHYSICSLIBRARY_API operator* (const class Length& lh, const class Pressure& rh); // defined in Stiffness.cpp
 
-  double PHYSICSLIBRARY_API operator/ (const Pressure& lh, const Pressure& rh);
   Pressure PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const Pressure& rh);
   Pressure PHYSICSLIBRARY_API operator/ (const Pressure& lh, const double& n);
   Pressure PHYSICSLIBRARY_API operator/ (const class Force& lh, const class Area& rh);
   Pressure PHYSICSLIBRARY_API operator/ (const class Stiffness& lh, const class Length& rh);
+  double PHYSICSLIBRARY_API operator/ (const Pressure& lh, const Pressure& rh);
 
   bool PHYSICSLIBRARY_API operator== (const Pressure& lh, const Pressure& rh);
   bool PHYSICSLIBRARY_API operator> (const Pressure& lh, const Pressure& rh);

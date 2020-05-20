@@ -25,6 +25,11 @@ namespace physics {
     double kg() const { return _value; }
 
     double slug() const { return _value * 0.06852176556196105; }
+
+    Mass& operator+= (const Mass& rh) { _value += rh._value; return *this; }
+    Mass& operator-= (const Mass& rh) { _value -= rh._value; return *this; }
+    Mass& operator*= (const double& rh) { _value *= rh; return *this; }
+    Mass& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
   Mass PHYSICSLIBRARY_API operator"" _g (long double val);

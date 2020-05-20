@@ -60,12 +60,9 @@ namespace physics {
   Stiffness PHYSICSLIBRARY_API operator* (const double& n, const Stiffness& rh);
   Stiffness PHYSICSLIBRARY_API operator* (const class Pressure& lh, const class Length& rh);
   Stiffness PHYSICSLIBRARY_API operator* (const class Length& lh, const class Pressure& rh);
-  class Force PHYSICSLIBRARY_API operator* (const Stiffness& lh, const class Length& rh);    // defined in Force.cpp
-  class Force PHYSICSLIBRARY_API operator* (const class Length& lh, const Stiffness& rh);    // defined in Force.cpp
 
   Stiffness PHYSICSLIBRARY_API operator/ (const Stiffness& lh, const double& n);
   Stiffness PHYSICSLIBRARY_API operator/ (const class Force& lh, const class Length& rh);
-  class Pressure PHYSICSLIBRARY_API operator/ (const Stiffness& lh, const class Length& rh);// defined in Pressure.cpp
 
   // Comparison operators
   bool PHYSICSLIBRARY_API  operator== (const Stiffness& lh, const Stiffness& rh);

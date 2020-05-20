@@ -12,7 +12,7 @@
 namespace physics {
 
   /**
-   * \class Angle The geometry formed by two non-colinear planar lines. 
+   * \class Angle The geometry formed by two non-colinear, coplanar lines. 
    */
   class PHYSICSLIBRARY_API Angle : public PhysicsBase{
   public:

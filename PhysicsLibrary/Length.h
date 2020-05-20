@@ -40,64 +40,50 @@ namespace physics {
     Length& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
-  Length PHYSICSLIBRARY_API  operator"" _mm (long double val);
-  Length PHYSICSLIBRARY_API  operator"" _mm (unsigned long long val);
+  Length PHYSICSLIBRARY_API operator"" _mm (long double val);
+  Length PHYSICSLIBRARY_API operator"" _mm (unsigned long long val);
 
-  Length PHYSICSLIBRARY_API  operator"" _cm (long double val);
-  Length PHYSICSLIBRARY_API  operator"" _cm (unsigned long long val);
+  Length PHYSICSLIBRARY_API operator"" _cm (long double val);
+  Length PHYSICSLIBRARY_API operator"" _cm (unsigned long long val);
 
-  Length PHYSICSLIBRARY_API  operator"" _m (long double val);
-  Length PHYSICSLIBRARY_API  operator"" _m (unsigned long long val);
+  Length PHYSICSLIBRARY_API operator"" _m (long double val);
+  Length PHYSICSLIBRARY_API operator"" _m (unsigned long long val);
 
-  Length PHYSICSLIBRARY_API  operator"" _km (long double val);
-  Length PHYSICSLIBRARY_API  operator"" _km (unsigned long long val);
+  Length PHYSICSLIBRARY_API operator"" _km (long double val);
+  Length PHYSICSLIBRARY_API operator"" _km (unsigned long long val);
 
-  Length PHYSICSLIBRARY_API  operator"" _in (long double val);
-  Length PHYSICSLIBRARY_API  operator"" _in (unsigned long long val);
+  Length PHYSICSLIBRARY_API operator"" _in (long double val);
+  Length PHYSICSLIBRARY_API operator"" _in (unsigned long long val);
 
-  Length PHYSICSLIBRARY_API  operator"" _ft (long double val);
-  Length PHYSICSLIBRARY_API  operator"" _ft (unsigned long long val);
+  Length PHYSICSLIBRARY_API operator"" _ft (long double val);
+  Length PHYSICSLIBRARY_API operator"" _ft (unsigned long long val);
 
-  Length PHYSICSLIBRARY_API  operator"" _mi (long double val);
-  Length PHYSICSLIBRARY_API  operator"" _mi (unsigned long long val);
+  Length PHYSICSLIBRARY_API operator"" _mi (long double val);
+  Length PHYSICSLIBRARY_API operator"" _mi (unsigned long long val);
 
   Length PHYSICSLIBRARY_API operator- (const Length& lh);
 
-  Length PHYSICSLIBRARY_API  operator+ (const Length& lh, const Length& rh);
+  Length PHYSICSLIBRARY_API operator+ (const Length& lh, const Length& rh);
 
-  Length PHYSICSLIBRARY_API  operator- (const Length& lh, const Length& rh);
+  Length PHYSICSLIBRARY_API operator- (const Length& lh, const Length& rh);
 
-  Length PHYSICSLIBRARY_API  operator* (const Length& lh, const double& n);
-  Length PHYSICSLIBRARY_API  operator* (const double& n, const Length& rh);
-  Area PHYSICSLIBRARY_API  operator* (const Length& lh, const Length& rh);    // defined in Area.cpp
-  Volume PHYSICSLIBRARY_API  operator* (const Area& lh, const Length& rh);    // defined in Volume.cpp
-  Volume PHYSICSLIBRARY_API  operator* (const Length& lh, const Area& rh);    // defined in Volume.cpp
-  SecondMomentOfArea PHYSICSLIBRARY_API  operator* (const Volume& lh,
-                                                    const Length& rh);         // defined in SecondMomentOfArea.cpp
-  SecondMomentOfArea PHYSICSLIBRARY_API  operator* (const Length& lh,
-                                                    const Volume& rh);         // defined in SecondMomentOfArea.cpp
-  class Force PHYSICSLIBRARY_API operator* (const class Stiffness& lh, const Length& rh);    // defined in Force.cpp
-  class Force PHYSICSLIBRARY_API operator* (const Length& lh, const class Stiffness& rh);
-  Stiffness PHYSICSLIBRARY_API operator* (const class Pressure& lh, const class Length& rh); // defined in Stiffness.cpp
-  Stiffness PHYSICSLIBRARY_API operator* (const class Length& lh, const class Pressure& rh); // defined in Stiffness.cpp// defined in Force.cpp
+  Length PHYSICSLIBRARY_API operator* (const Length& lh, const double& n);
+  Length PHYSICSLIBRARY_API operator* (const double& n, const Length& rh);
+  Length PHYSICSLIBRARY_API operator* (const class Velocity& lh, const class Time& rh);
+  Length PHYSICSLIBRARY_API operator* (const class Time& lh, const class Velocity& rh);
 
-  Length PHYSICSLIBRARY_API  operator/ (const Area& lh, const Length& rh);
-  Length PHYSICSLIBRARY_API  operator/ (const Volume& lh, const Area& rh);
-  Length PHYSICSLIBRARY_API  operator/ (const SecondMomentOfArea& lh, const Volume& rh);
-  Volume PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh,
-                                       const Length& rh);                     // defined in Volume.cpp
-  Area PHYSICSLIBRARY_API  operator/ (const Volume& lh, const Length& rh);    // defined in Area.cpp
-  double PHYSICSLIBRARY_API  operator/ (const Length& lh, const Length& rh);
-  Length PHYSICSLIBRARY_API  operator/ (const Length& lh, const double& n);
-  class Stiffness PHYSICSLIBRARY_API operator/ (const class Force& lh, const Length& rh);    // defined in Stiffness.cpp
-  class Pressure PHYSICSLIBRARY_API operator/ (const class Stiffness& lh, const Length& rh); // defined in Pressure.cpp
-  
-  bool PHYSICSLIBRARY_API  operator== (const Length& lh, const Length& rh);
-  bool PHYSICSLIBRARY_API  operator> (const Length& lh, const Length& rh);
-  bool PHYSICSLIBRARY_API  operator!= (const Length& lh, const Length& rh);
-  bool PHYSICSLIBRARY_API  operator< (const Length& lh, const Length& rh);
-  bool PHYSICSLIBRARY_API  operator>= (const Length& lh, const Length& rh);
-  bool PHYSICSLIBRARY_API  operator<= (const Length& lh, const Length& rh);
+  Length PHYSICSLIBRARY_API operator/ (const Area& lh, const Length& rh);
+  Length PHYSICSLIBRARY_API operator/ (const Volume& lh, const Area& rh);
+  Length PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Volume& rh);
+  Length PHYSICSLIBRARY_API operator/ (const Length& lh, const double& n);
+  double PHYSICSLIBRARY_API operator/ (const Length& lh, const Length& rh);
+   
+  bool PHYSICSLIBRARY_API operator== (const Length& lh, const Length& rh);
+  bool PHYSICSLIBRARY_API operator> (const Length& lh, const Length& rh);
+  bool PHYSICSLIBRARY_API operator!= (const Length& lh, const Length& rh);
+  bool PHYSICSLIBRARY_API operator< (const Length& lh, const Length& rh);
+  bool PHYSICSLIBRARY_API operator>= (const Length& lh, const Length& rh);
+  bool PHYSICSLIBRARY_API operator<= (const Length& lh, const Length& rh);
 
   inline Length PHYSICSLIBRARY_API conj(const Length& x) { return x; }
   inline Length PHYSICSLIBRARY_API real(const Length& x) { return x; }

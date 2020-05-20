@@ -24,16 +24,21 @@ namespace physics {
     double sec() const { return _value; }
     double minute() const { return _value / 60; }
     double hour() const { return _value / 3600; }
+
+    Time& operator+= (const Time& rh) { _value += rh._value; return *this; }
+    Time& operator-= (const Time& rh) { _value -= rh._value; return *this; }
+    Time& operator*= (const double& rh) { _value *= rh; return *this; }
+    Time& operator/= (const double& rh) { _value /= rh; return *this; }
   };
 
   Time PHYSICSLIBRARY_API operator"" _sec (long double val);
   Time PHYSICSLIBRARY_API operator"" _sec (unsigned long long val);
 
-  Time operator"" _minute (long double val);
-  Time operator"" _minute (unsigned long long val);
+  Time PHYSICSLIBRARY_API operator"" _minute (long double val);
+  Time PHYSICSLIBRARY_API operator"" _minute (unsigned long long val);
 
-  Time operator"" _hour (long double val);
-  Time operator"" _hour (unsigned long long val);
+  Time PHYSICSLIBRARY_API operator"" _hour (long double val);
+  Time PHYSICSLIBRARY_API operator"" _hour (unsigned long long val);
 
   Time PHYSICSLIBRARY_API operator- (const Time& lh);
 

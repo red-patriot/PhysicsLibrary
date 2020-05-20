@@ -4,6 +4,8 @@
 #include "Volume.h"
 #include "Area.h"
 #include "Length.h"
+#include "Velocity.h"
+#include "TIme.h"
 #include "PhysicsMath.h"
 
 namespace physics {
@@ -26,12 +28,15 @@ namespace physics {
   Length operator* (const double& n, const Length& rh) {
     return rh * n;
   }
-  Length operator/ (const Length& lh, const double& n) {
-    return Length(lh.value() / n);
+  Length operator* (const Velocity& lh, const Time& rh) {
+    return Length(lh.value() * rh.value());
+  }
+  Length operator* (const Time& lh, const Velocity& rh) {
+    return rh * lh;
   }
 
-  double operator/ (const Length& lh, const Length& rh) {
-    return lh.value() / rh.value();
+  Length operator/ (const Length& lh, const double& n) {
+    return Length(lh.value() / n);
   }
   Length operator/ (const Area& lh, const Length& rh) {
     return Length(lh.value() / rh.value());
@@ -41,6 +46,9 @@ namespace physics {
   }
   Length operator/ (const SecondMomentOfArea& lh, const Volume& rh) {
     return Length(lh.value() / rh.value());
+  }
+  double operator/ (const Length& lh, const Length& rh) {
+    return lh.value() / rh.value();
   }
 
   // Comparison operators

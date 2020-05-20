@@ -62,20 +62,12 @@ namespace physics {
 
   Volume PHYSICSLIBRARY_API operator* (const Area& lh, const Length& rh);
   Volume PHYSICSLIBRARY_API operator* (const Length& lh, const Area& rh);
-  SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Volume& lh,
-                                                          const Length& rh);        // defined in MomentofArea.cpp
-  SecondMomentOfArea PHYSICSLIBRARY_API operator* (const Length& lh,
-                                                          const Volume& rh);        // defined in MomentofArea.cpp
   Volume PHYSICSLIBRARY_API operator* (const Volume& lh, const double& n);
   Volume PHYSICSLIBRARY_API operator* (const double& n, const Volume& rh);
 
   Volume PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Length& rh);
-  Area PHYSICSLIBRARY_API operator/ (const Volume& lh, const Length& rh);    // defined in Area.cpp
-  Length PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh,
-                                              const Volume& rh);                    // defined in Length.cpp
-  Length PHYSICSLIBRARY_API operator/ (const Volume& lh, const Area& rh);    // defined in Length.cpp
-  double PHYSICSLIBRARY_API operator/ (const Volume& lh, const Volume& rh);
   Volume PHYSICSLIBRARY_API operator/ (const Volume& lh, const double& n);
+  double PHYSICSLIBRARY_API operator/ (const Volume& lh, const Volume& rh);
 
   bool PHYSICSLIBRARY_API operator== (const Volume& lh, const Volume& rh);
   bool PHYSICSLIBRARY_API operator> (const Volume& lh, const Volume& rh);

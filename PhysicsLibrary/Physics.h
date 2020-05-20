@@ -7,10 +7,11 @@
 #include "PhysicsBase.h"
 #include "PhysicsMath.h"
 
-// Force headers
-#include "Force.h"
-#include "Stiffness.h"
-#include "Pressure.h"
+// Mass header
+#include "Mass.h"
+
+// Time header
+#include "Time.h"
 
 // Displacement headers
 #include "Angle.h"
@@ -19,10 +20,12 @@
 #include "Volume.h"
 #include "MomentOfArea.h"
 
-// Mass header
-#include "Mass.h"
+// Force headers
+#include "Force.h"
+#include "Stiffness.h"
+#include "Pressure.h"
 
-// Time header
-#include "TIme.h"
+// Movement headers
+#include "Velocity.h"
 
 #endif

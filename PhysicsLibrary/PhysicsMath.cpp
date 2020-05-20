@@ -62,6 +62,14 @@ namespace physics {
     return Pressure(std::sqrt(r.value()));
   }
 
+  Time abs(const Time& x) {
+    return Time(fabs(x.value()));
+  }
+
+  Mass abs(const Mass& x) {
+    return Mass(fabs(x.value()));
+  }
+
   Angle abs(const Angle& x) {
     return Angle(fabs(x.rad()));
   }
@@ -94,8 +102,16 @@ namespace physics {
     return Pressure(fabs(x.Pa())); 
   }
 
+  Velocity abs(const Velocity& x) {
+    return Velocity(fabs(x.value()));
+  }
+
   Area abs2(const Length& x) {
     return x*x; 
+  }
+
+  SecondMomentOfArea abs2(const Area& x) {
+    return x*x;
   }
 
   Pressure2 abs2(const Pressure& x) {
