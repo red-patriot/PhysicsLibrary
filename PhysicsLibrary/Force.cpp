@@ -2,9 +2,11 @@
 
 #include "Force.h"
 #include "Stiffness.h"
+#include "Pressure.h"
 #include "Length.h"
 #include "Area.h"
-#include "Pressure.h"
+#include "Acceleration.h"
+#include "Mass.h"
 #include "PhysicsMath.h"
 
 namespace physics {
@@ -38,6 +40,12 @@ namespace physics {
   Force  operator*(const Area& lh, const Pressure& rh) {
     return rh * lh;
   }
+  Force operator* (const Mass& lh, const Acceleration& rh) {
+  	return Force(lh.value() * rh.value());
+  }
+  Force operator* (const Acceleration& lh, const Mass& rh) {
+  	return Force(lh.value() * rh.value());
+  }
     
   double  operator/ (const Force& lh, const Force& rh) {
     return lh.value() / rh.value();
@@ -45,7 +53,7 @@ namespace physics {
   Force  operator/ (const Force& lh, const double& n) {
     return Force(lh.value() / n);
   }
-     
+
   bool  operator== (const Force& lh, const Force& rh) {
     return fuzzy_equals(lh.value(), rh.value());
   }

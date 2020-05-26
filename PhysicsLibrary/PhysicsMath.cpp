@@ -106,6 +106,10 @@ namespace physics {
     return Velocity(fabs(x.value()));
   }
 
+  Acceleration abs(const Acceleration& x) {
+      return Acceleration(fabs(x.value()));
+  }
+
   Area abs2(const Length& x) {
     return x*x; 
   }

@@ -58,6 +58,7 @@ namespace physics {
   inline class Stiffness PHYSICSLIBRARY_API abs(const class Stiffness& x);
   inline class Pressure PHYSICSLIBRARY_API abs(const class Pressure& x);
   inline class Velocity PHYSICSLIBRARY_API abs(const class Velocity& x);
+  inline class Acceleration PHYSICSLIBRARY_API abs(const class Acceleration& x);
 
   inline class Area abs2(const class Length& x);
   inline class SecondMomentOfArea abs2(const class Area& x);

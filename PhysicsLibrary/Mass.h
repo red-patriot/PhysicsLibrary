@@ -51,6 +51,7 @@ namespace physics {
   Mass PHYSICSLIBRARY_API operator* (const double& lh, const Mass& rh);
 
   Mass PHYSICSLIBRARY_API operator/ (const Mass& lh, const double& rh);
+  Mass PHYSICSLIBRARY_API operator/ (const class Force& lh, const class Acceleration& rh);
 
   bool PHYSICSLIBRARY_API operator== (const Mass& lh, const Mass& rh);
   bool PHYSICSLIBRARY_API operator> (const Mass& lh, const Mass& rh);

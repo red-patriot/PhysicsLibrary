@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Acceleration.h" />
     <ClInclude Include="Angle.h" />
     <ClInclude Include="Area.h" />
     <ClInclude Include="Force.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="Volume.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Acceleration.cpp" />
     <ClCompile Include="Angle.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>

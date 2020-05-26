@@ -27,5 +27,6 @@
 
 // Movement headers
 #include "Velocity.h"
+#include "Acceleration.h"
 
 #endif

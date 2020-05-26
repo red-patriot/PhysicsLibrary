@@ -1,6 +1,8 @@
 #include "pch.h"
 
 #include "Mass.h"
+#include "Force.h"
+#include "Acceleration.h"
 #include "PhysicsMath.h"
 
 namespace physics {
@@ -26,6 +28,9 @@ namespace physics {
 
   Mass operator/ (const Mass& lh, const double& rh){
 	  return Mass(lh.value() / rh);
+  }
+  Mass operator/ (const Force& lh, const Acceleration& rh) {
+  	return Mass(lh.value() / rh.value());
   }
 
   // Comparison operators
