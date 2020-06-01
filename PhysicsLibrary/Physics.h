@@ -23,6 +23,7 @@
 // Force headers
 #include "Force.h"
 #include "Stiffness.h"
+#include "Damping.h"
 #include "Pressure.h"
 
 // Movement headers

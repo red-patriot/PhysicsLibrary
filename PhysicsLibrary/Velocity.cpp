@@ -1,7 +1,9 @@
 #include "pch.h"
 
-#include "Acceleration.h"
+#include "Force.h"
+#include "Damping.h"
 #include "Velocity.h"
+#include "Acceleration.h"
 #include "Time.h"
 #include "Length.h"
 
@@ -41,6 +43,9 @@ namespace physics {
   }
   double operator/ (const Velocity& lh, const Velocity& rh) {
   	return lh.value() / rh.value();
+  }
+  Velocity operator/ (const Force& lh, const Damping& rh) {
+  	return Velocity(lh.value() / rh.value());
   }
 
   Velocity operator"" _mpsec (long double val) {

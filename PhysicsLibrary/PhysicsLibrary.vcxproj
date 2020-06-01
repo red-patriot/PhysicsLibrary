@@ -154,6 +154,7 @@
     <ClInclude Include="Acceleration.h" />
     <ClInclude Include="Angle.h" />
     <ClInclude Include="Area.h" />
+    <ClInclude Include="Damping.h" />
     <ClInclude Include="Force.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Length.h" />
@@ -176,6 +177,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Area.cpp" />
+    <ClCompile Include="Damping.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Force.cpp" />
     <ClCompile Include="Length.cpp" />

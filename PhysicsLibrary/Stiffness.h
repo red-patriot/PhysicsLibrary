@@ -63,6 +63,7 @@ namespace physics {
 
   Stiffness PHYSICSLIBRARY_API operator/ (const Stiffness& lh, const double& n);
   Stiffness PHYSICSLIBRARY_API operator/ (const class Force& lh, const class Length& rh);
+  Stiffness PHYSICSLIBRARY_API operator/ (const class Damping& lh, const class Time& rh);
 
   // Comparison operators
   bool PHYSICSLIBRARY_API  operator== (const Stiffness& lh, const Stiffness& rh);

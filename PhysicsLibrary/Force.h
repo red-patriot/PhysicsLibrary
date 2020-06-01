@@ -60,6 +60,8 @@ namespace physics {
   Force PHYSICSLIBRARY_API operator* (const class Length& lh, const class Stiffness& rh);
   Force PHYSICSLIBRARY_API operator* (const class Mass& lh, const class Acceleration& rh);
   Force PHYSICSLIBRARY_API operator* (const class Acceleration& lh, const class Mass& rh);
+  Force PHYSICSLIBRARY_API operator* (const class Damping& lh, const class Velocity& rh);
+  Force PHYSICSLIBRARY_API operator* (const class Velocity& lh, const class Damping& rh);
 
   Force PHYSICSLIBRARY_API operator/ (const Force& lh, const double& n);
   double PHYSICSLIBRARY_API operator/ (const Force& lh, const Force& rh);

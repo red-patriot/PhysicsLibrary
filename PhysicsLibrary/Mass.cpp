@@ -2,7 +2,9 @@
 
 #include "Mass.h"
 #include "Force.h"
+#include "Damping.h"
 #include "Acceleration.h"
+#include "TIme.h"
 #include "PhysicsMath.h"
 
 namespace physics {
@@ -24,6 +26,12 @@ namespace physics {
   }
   Mass operator* (const double& lh, const Mass& rh){
 	  return Mass(lh * rh.value());
+  }
+  Mass operator* (const Damping& lh, const Time& rh) {
+  	return Mass(lh.value() * rh.value());
+  }
+  Mass operator* (const Time& lh, const Damping& rh) {
+  	return Mass(lh.value() * rh.value());
   }
 
   Mass operator/ (const Mass& lh, const double& rh){

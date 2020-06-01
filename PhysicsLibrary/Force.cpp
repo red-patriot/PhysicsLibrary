@@ -1,13 +1,15 @@
 #include "pch.h"
 
+#include "PhysicsMath.h"
 #include "Force.h"
 #include "Stiffness.h"
 #include "Pressure.h"
 #include "Length.h"
 #include "Area.h"
+#include "Damping.h"
+#include "Velocity.h"
 #include "Acceleration.h"
 #include "Mass.h"
-#include "PhysicsMath.h"
 
 namespace physics {
   // Negation operator
@@ -44,6 +46,12 @@ namespace physics {
   	return Force(lh.value() * rh.value());
   }
   Force operator* (const Acceleration& lh, const Mass& rh) {
+  	return Force(lh.value() * rh.value());
+  }
+  Force operator* (const Damping& lh, const Velocity& rh) {
+  	return Force(lh.value() * rh.value());
+  }
+  Force operator* (const Velocity& lh, const Damping& rh) {
   	return Force(lh.value() * rh.value());
   }
     

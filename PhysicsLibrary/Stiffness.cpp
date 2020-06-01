@@ -1,9 +1,12 @@
 #include "pch.h"
+
 #include "PhysicsMath.h"
 #include "Stiffness.h"
 #include "Force.h"
 #include "Pressure.h"
+#include "Damping.h"
 #include "Length.h"
+#include "Time.h"
 
 namespace physics {
   Stiffness PHYSICSLIBRARY_API operator- (const Stiffness& lh);
@@ -42,6 +45,9 @@ namespace physics {
 
   Stiffness operator/(const Force& lh, const Length& rh) {
     return Stiffness(lh.value() / rh.value());
+  }
+  Stiffness operator/ (const Damping& lh, const Time& rh) {
+  	return Stiffness(lh.value() / rh.value());
   }
 
   bool operator==(const Stiffness& lh, const Stiffness& rh) {

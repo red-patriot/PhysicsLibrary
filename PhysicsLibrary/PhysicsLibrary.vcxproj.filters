@@ -66,6 +66,9 @@
     <ClInclude Include="Acceleration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Damping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -111,6 +114,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Acceleration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Damping.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
