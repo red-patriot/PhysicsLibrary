@@ -17,7 +17,7 @@ namespace physics {
      * 
      * \param _meters_per_second The measure of speed in meters per second
      */
-    Velocity(const double _meters_per_second = 0) : PhysicsBase(_meters_per_second) { }
+    explicit Velocity(const double _meters_per_second = 0) : PhysicsBase(_meters_per_second) { }
     Velocity(const Velocity&) = default;
     ~Velocity() = default;
 

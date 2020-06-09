@@ -66,6 +66,10 @@ namespace physics {
     return Time(fabs(x.value()));
   }
 
+  Frequency abs(const Frequency& x) {
+    return Frequency(fabs(x.value()));
+  }
+
   Mass abs(const Mass& x) {
     return Mass(fabs(x.value()));
   }
@@ -96,6 +100,10 @@ namespace physics {
 
   Stiffness abs(const Stiffness& x) {
     return Stiffness(fabs(x.Npm()));
+  }
+
+  Damping abs(const Damping& x) {
+      return Damping(fabs(x.value()));
   }
 
   Pressure abs(const Pressure& x) {

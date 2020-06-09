@@ -17,7 +17,7 @@ namespace physics {
      * 
      * \param _seconds the measure of time in seconds
      */
-    Time(const double _seconds = 0) : PhysicsBase(_seconds) { }
+    explicit Time(const double _seconds = 0) : PhysicsBase(_seconds) { }
     Time(const Time&) = default;
     ~Time() = default;
 
@@ -86,6 +86,7 @@ namespace Eigen {
 
 };  // namespace Eigen
 
-using physics::operator"" _sec;
+using physics::operator"" _sec;        using physics::operator"" _minute;
+using physics::operator"" _hour;
 
 #endif

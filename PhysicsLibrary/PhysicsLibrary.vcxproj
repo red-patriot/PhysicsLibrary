@@ -157,6 +157,7 @@
     <ClInclude Include="Damping.h" />
     <ClInclude Include="Force.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Frequency.h" />
     <ClInclude Include="Length.h" />
     <ClInclude Include="Mass.h" />
     <ClInclude Include="MomentOfArea.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="Damping.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Force.cpp" />
+    <ClCompile Include="Frequency.cpp" />
     <ClCompile Include="Length.cpp" />
     <ClCompile Include="Mass.cpp" />
     <ClCompile Include="MomentOfArea.cpp" />

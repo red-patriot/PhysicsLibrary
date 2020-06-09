@@ -17,7 +17,7 @@ namespace physics {
      * 
      * \param _Newton_seconds_per_meter the measure of Damping in Newton seconds per meter.
      */
-    Damping(const double _Newton_seconds_per_meter = 0) : PhysicsBase(_Newton_seconds_per_meter) { }
+    explicit Damping(const double _Newton_seconds_per_meter = 0) : PhysicsBase(_Newton_seconds_per_meter) { }
     Damping(const Damping&) = default;
     ~Damping() = default;
 
@@ -61,5 +61,8 @@ namespace physics {
   double PHYSICSLIBRARY_API operator/ (const Damping& lh, const Damping& rh);
 
 };  // namespace physics
+
+using physics::operator"" _Nspm;        using physics::operator"" _kNspm;
+using physics::operator"" _lbspin;      using physics::operator"" _lbspft;
 
 #endif

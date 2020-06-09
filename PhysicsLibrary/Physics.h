@@ -7,11 +7,12 @@
 #include "PhysicsBase.h"
 #include "PhysicsMath.h"
 
+// Time headers
+#include "Time.h"
+#include "Frequency.h"
+
 // Mass header
 #include "Mass.h"
-
-// Time header
-#include "Time.h"
 
 // Displacement headers
 #include "Angle.h"
