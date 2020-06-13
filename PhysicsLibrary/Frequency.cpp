@@ -5,6 +5,7 @@
 #include "Velocity.h"
 #include "Acceleration.h"
 #include "Length.h"
+#include "PhysicsMath.h"
 
 namespace physics {
 
@@ -42,6 +43,31 @@ namespace physics {
   Frequency operator/ (const Acceleration& lh, const Velocity& rh) {
   	return Frequency(lh.value() / rh.value());
   }
+
+  bool operator== (const Frequency& lh, const Frequency& rh) {
+    return fuzzy_equals(lh.value(), rh.value());
+  }
+  bool operator> (const Frequency& lh, const Frequency& rh) {
+    return fuzzy_greater(lh.value(), rh.value());
+  }
+
+  bool operator!= (const Frequency& lh, const Frequency& rh) {
+    return !(lh == rh);
+  }
+  bool operator< (const Frequency& lh, const Frequency& rh) {
+    return rh > lh;
+  }
+  bool operator>= (const Frequency& lh, const Frequency& rh) {
+    return lh > rh || lh == rh;
+  }
+  bool operator<= (const Frequency& lh, const Frequency& rh) {
+    return rh > lh || lh == rh;
+  }
+
+  /* Literal operators
+   * The following units are supported:
+   * Hz, kHz, MHz
+   */
 
   Frequency operator"" _Hz (long double val) {
     return Frequency(val);

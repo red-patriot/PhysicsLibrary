@@ -1,5 +1,9 @@
-#pragma once
+#ifndef Frequency_h_INCLUDED
+#define Frequency_h_INCLUDED
+
 #include "PhysicsBase.h"
+
+#include <Eigen\Core>
 
 namespace physics {
 
@@ -53,7 +57,41 @@ namespace physics {
   Frequency PHYSICSLIBRARY_API operator/ (const class Velocity& lh, const class Length& rh);
   Frequency PHYSICSLIBRARY_API operator/ (const class Acceleration& lh, const class Velocity& rh);
 
+  bool PHYSICSLIBRARY_API operator== (const Frequency& lh, const Frequency& rh);
+  bool PHYSICSLIBRARY_API operator> (const Frequency& lh, const Frequency& rh);
+  bool PHYSICSLIBRARY_API operator!= (const Frequency& lh, const Frequency& rh);
+  bool PHYSICSLIBRARY_API operator< (const Frequency& lh, const Frequency& rh);
+  bool PHYSICSLIBRARY_API operator>= (const Frequency& lh, const Frequency& rh);
+  bool PHYSICSLIBRARY_API operator<= (const Frequency& lh, const Frequency& rh);
+  
+  inline Frequency PHYSICSLIBRARY_API conj(const Frequency& x) { return x; }
+  inline Frequency PHYSICSLIBRARY_API real(const Frequency& x) { return x; }
+  inline Frequency PHYSICSLIBRARY_API imag(const Frequency&) { return 0_Hz; }
+
 };
+
+/* Integration with Eigen */
+namespace Eigen {
+
+  template<> struct NumTraits<physics::Frequency> : NumTraits<double> {
+    typedef physics::Frequency Real;
+    typedef physics::Frequency NonInteger;
+    typedef physics::Frequency Nested;
+
+    enum {
+      IsComplex = 0,
+      IsInteger = 0,
+      IsSigned = 1,
+      RequireInitialization = 1,
+      ReadCost = 1,
+      AddCost = 3,
+      MulCost = 3
+    };
+  };
+
+};  // namespace Eigen
 
 using physics::operator"" _Hz;        using physics::operator"" _kHz;
 using physics::operator"" _MHz;
+
+#endif

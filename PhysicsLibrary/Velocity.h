@@ -66,6 +66,13 @@ namespace physics {
   double PHYSICSLIBRARY_API operator/ (const Velocity& lh, const Velocity& rh);
   Velocity PHYSICSLIBRARY_API operator/ (const class Force& lh, const class Damping& rh);
 
+  bool PHYSICSLIBRARY_API operator== (const Velocity& lh, const Velocity& rh);
+  bool PHYSICSLIBRARY_API operator> (const Velocity& lh, const Velocity& rh);
+  bool PHYSICSLIBRARY_API operator!= (const Velocity& lh, const Velocity& rh);
+  bool PHYSICSLIBRARY_API operator< (const Velocity& lh, const Velocity& rh);
+  bool PHYSICSLIBRARY_API operator>= (const Velocity& lh, const Velocity& rh);
+  bool PHYSICSLIBRARY_API operator<= (const Velocity& lh, const Velocity& rh);
+
   inline Velocity PHYSICSLIBRARY_API conj(const Velocity& x) { return x; }
   inline Velocity PHYSICSLIBRARY_API real(const Velocity& x) { return x; }
   inline Velocity PHYSICSLIBRARY_API imag(const Velocity& x) { return 0_mpsec; }

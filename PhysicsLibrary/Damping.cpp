@@ -2,7 +2,8 @@
 
 #include "Damping.h"
 #include "Stiffness.h"
-#include "TIme.h"
+#include "Time.h"
+#include "PhysicsMath.h"
 
 namespace physics {
 
@@ -37,6 +38,32 @@ namespace physics {
   double operator/ (const Damping& lh, const Damping& rh) {
   	return double(lh.value() / rh.value());
   }
+
+  bool operator== (const Damping& lh, const Damping& rh) {
+    return fuzzy_equals(lh.value(), rh.value());
+  }
+  bool operator> (const Damping& lh, const Damping& rh) {
+    return fuzzy_greater(lh.value(), rh.value());
+  }
+
+  bool operator!= (const Damping& lh, const Damping& rh) {
+    return !(lh == rh);
+  }
+  bool operator< (const Damping& lh, const Damping& rh) {
+    return rh > lh;
+  }
+  bool operator>= (const Damping& lh, const Damping& rh) {
+    return lh > rh || lh == rh;
+  }
+  bool operator<= (const Damping& lh, const Damping& rh) {
+    return rh > lh || lh == rh;
+  }
+
+  /* Literal operators
+   * The following units are supported:
+   * Ns / m, kNs / m,
+   * lbs/ in, lbs / ft
+   */
 
   Damping operator"" _Nspm (long double val) {
     return Damping(val);

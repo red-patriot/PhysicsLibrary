@@ -5,6 +5,7 @@
 #include "Time.h"
 #include "Mass.h"
 #include "Force.h"
+#include "PhysicsMath.h"
 
 namespace physics {
 
@@ -40,6 +41,31 @@ namespace physics {
   	return Acceleration(lh.value() / rh.value());
   }
 
+  bool operator== (const Acceleration& lh, const Acceleration& rh) {
+    return fuzzy_equals(lh.value(), rh.value());
+  }
+  bool operator> (const Acceleration& lh, const Acceleration& rh) {
+    return fuzzy_greater(lh.value(), rh.value());
+  }
+
+  bool operator!= (const Acceleration& lh, const Acceleration& rh) {
+    return !(lh == rh);
+  }
+  bool operator< (const Acceleration& lh, const Acceleration& rh) {
+    return rh > lh;
+  }
+  bool operator>= (const Acceleration& lh, const Acceleration& rh) {
+    return lh > rh || lh == rh;
+  }
+  bool operator<= (const Acceleration& lh, const Acceleration& rh) {
+    return rh > lh || lh == rh;
+  }
+
+  /* Literal operators
+   * The following units are supported:
+   * m / s^2, 
+   * in / s^2, ft / s^2
+   */
 
   Acceleration operator"" _mpsec2 (long double val) {
     return Acceleration(val);

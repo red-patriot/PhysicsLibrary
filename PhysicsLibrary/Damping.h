@@ -60,6 +60,13 @@ namespace physics {
   Damping PHYSICSLIBRARY_API operator/ (const Damping& lh, const double& rh);
   double PHYSICSLIBRARY_API operator/ (const Damping& lh, const Damping& rh);
 
+  bool PHYSICSLIBRARY_API operator== (const Damping& lh, const Damping& rh);
+  bool PHYSICSLIBRARY_API operator> (const Damping& lh, const Damping& rh);
+  bool PHYSICSLIBRARY_API operator!= (const Damping& lh, const Damping& rh);
+  bool PHYSICSLIBRARY_API operator< (const Damping& lh, const Damping& rh);
+  bool PHYSICSLIBRARY_API operator>= (const Damping& lh, const Damping& rh);
+  bool PHYSICSLIBRARY_API operator<= (const Damping& lh, const Damping& rh);
+
 };  // namespace physics
 
 using physics::operator"" _Nspm;        using physics::operator"" _kNspm;

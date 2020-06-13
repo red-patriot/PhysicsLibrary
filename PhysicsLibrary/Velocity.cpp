@@ -48,6 +48,32 @@ namespace physics {
   	return Velocity(lh.value() / rh.value());
   }
 
+  bool operator== (const Velocity& lh, const Velocity& rh) {
+    return fuzzy_equals(lh.value(), rh.value());
+  }
+  bool operator> (const Velocity& lh, const Velocity& rh) {
+    return fuzzy_greater(lh.value(), rh.value());
+  }
+
+  bool operator!= (const Velocity& lh, const Velocity& rh) {
+    return !(lh == rh);
+  }
+  bool operator< (const Velocity& lh, const Velocity& rh) {
+    return rh > lh;
+  }
+  bool operator>= (const Velocity& lh, const Velocity& rh) {
+    return lh > rh || lh == rh;
+  }
+  bool operator<= (const Velocity& lh, const Velocity& rh) {
+    return rh > lh || lh == rh;
+  }
+
+  /* Literal operators
+ * The following units are supported:
+ * m/s, kph,
+ * in/s, ft/s, mph
+ */
+
   Velocity operator"" _mpsec (long double val) {
     return Velocity(val);
   }
