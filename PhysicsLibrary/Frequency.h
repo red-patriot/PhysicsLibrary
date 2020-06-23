@@ -56,6 +56,7 @@ namespace physics {
   Frequency PHYSICSLIBRARY_API operator/ (const double& lh, const class Time& rh);
   Frequency PHYSICSLIBRARY_API operator/ (const class Velocity& lh, const class Length& rh);
   Frequency PHYSICSLIBRARY_API operator/ (const class Acceleration& lh, const class Velocity& rh);
+  Frequency PHYSICSLIBRARY_API operator/ (const class Frequency2& lh, const Frequency& rh);
 
   bool PHYSICSLIBRARY_API operator== (const Frequency& lh, const Frequency& rh);
   bool PHYSICSLIBRARY_API operator> (const Frequency& lh, const Frequency& rh);
@@ -67,6 +68,38 @@ namespace physics {
   inline Frequency PHYSICSLIBRARY_API conj(const Frequency& x) { return x; }
   inline Frequency PHYSICSLIBRARY_API real(const Frequency& x) { return x; }
   inline Frequency PHYSICSLIBRARY_API imag(const Frequency&) { return 0_Hz; }
+
+  /**
+   * \class Frequency2 A class modeling a frequency squared for intermediate steps in equations
+   * 
+   * this class is only for use in intermetiate operations of.
+   * equations; it has limited functionality. 
+   */
+  class PHYSICSLIBRARY_API Frequency2 : public PhysicsBase { 
+  public:
+    /**
+     * \brief Construct a Frequency2
+     * 
+     * \param _hertz2 the measure of Hertz^2
+     */
+    explicit Frequency2(const double _hertz2 = 0): PhysicsBase(_hertz2) { }
+    Frequency2(const Frequency2&) = default;
+    ~Frequency2() = default;
+  };
+
+  Frequency2 PHYSICSLIBRARY_API operator- (const Frequency2& lh);
+
+  Frequency2 PHYSICSLIBRARY_API operator+ (const Frequency2& lh, const Frequency2& rh);
+
+  Frequency2 PHYSICSLIBRARY_API operator- (const Frequency2& lh, const Frequency2& rh);
+
+  Frequency2 PHYSICSLIBRARY_API operator* (const Frequency2& lh, const double& rh);
+  Frequency2 PHYSICSLIBRARY_API operator* (const double& lh, const Frequency2& rh);
+  Frequency2 PHYSICSLIBRARY_API operator* (const Frequency& lh, const Frequency& rh);
+
+  Frequency2 PHYSICSLIBRARY_API operator/ (const Frequency2& lh, const double& rh);
+  Frequency2 PHYSICSLIBRARY_API operator/ (const class Acceleration& lh, const class Length& rh);
+  Frequency2 PHYSICSLIBRARY_API operator/ (const class Stiffness& lh, const class Mass& rh);
 
 };
 

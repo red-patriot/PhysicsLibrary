@@ -56,6 +56,8 @@ namespace physics {
   Damping PHYSICSLIBRARY_API operator* (const double& lh, const Damping& rh);
   Damping PHYSICSLIBRARY_API operator* (const class Stiffness& lh, const class Time& rh);
   Damping PHYSICSLIBRARY_API operator* (const class Time& lh, const class Stiffness& rh);
+  Damping PHYSICSLIBRARY_API operator* (const class Mass& lh, const class Frequency& rh);
+  Damping PHYSICSLIBRARY_API operator* (const class Frequency& lh, const class Mass& rh);
 
   Damping PHYSICSLIBRARY_API operator/ (const Damping& lh, const double& rh);
   double PHYSICSLIBRARY_API operator/ (const Damping& lh, const Damping& rh);

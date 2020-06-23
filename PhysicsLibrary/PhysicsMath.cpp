@@ -62,6 +62,10 @@ namespace physics {
     return Pressure(std::sqrt(r.value()));
   }
 
+  Frequency sqrt(const Frequency2& r) {
+      return Frequency(std::sqrt(r.value()));
+  }
+
   Time abs(const Time& x) {
     return Time(fabs(x.value()));
   }
@@ -128,6 +132,10 @@ namespace physics {
 
   Pressure2 abs2(const Pressure& x) {
     return x*x; 
+  }
+
+  Frequency2 abs2(const Frequency& x) {
+    return x*x;
   }
 
 };

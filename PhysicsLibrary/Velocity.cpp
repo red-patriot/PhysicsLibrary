@@ -6,6 +6,7 @@
 #include "Acceleration.h"
 #include "Time.h"
 #include "Length.h"
+#include "PhysicsMath.h"
 
 
 namespace physics {

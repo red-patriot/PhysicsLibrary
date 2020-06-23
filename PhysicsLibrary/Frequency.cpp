@@ -1,10 +1,12 @@
 #include "pch.h"
 
-#include "Frequency.h"
 #include "Time.h"
+#include "Frequency.h"
+#include "Mass.h"
+#include "Length.h"
+#include "Stiffness.h"
 #include "Velocity.h"
 #include "Acceleration.h"
-#include "Length.h"
 #include "PhysicsMath.h"
 
 namespace physics {
@@ -43,6 +45,10 @@ namespace physics {
   Frequency operator/ (const Acceleration& lh, const Velocity& rh) {
   	return Frequency(lh.value() / rh.value());
   }
+  Frequency operator/ (const Frequency2& lh, const Frequency& rh) {
+  	return Frequency(lh.value() / rh.value());
+  }
+
 
   bool operator== (const Frequency& lh, const Frequency& rh) {
     return fuzzy_equals(lh.value(), rh.value());
@@ -89,5 +95,38 @@ namespace physics {
   Frequency operator"" _MHz (unsigned long long val) {
     return Frequency(val);
   }
+
+  Frequency2 operator- (const Frequency2& lh) {
+    return Frequency2(-lh.value());
+  }
+
+  Frequency2 operator+ (const Frequency2& lh, const Frequency2& rh) {
+  	return Frequency2(lh.value() + rh.value());
+  }
+
+  Frequency2 operator- (const Frequency2& lh, const Frequency2& rh) {
+  	return Frequency2(lh.value() - rh.value());
+  }
+
+  Frequency2 operator* (const Frequency2& lh, const double& rh) {
+  	return Frequency2(lh.value() * rh);
+  }
+  Frequency2 operator* (const double& lh, const Frequency2& rh) {
+  	return Frequency2(lh * rh.value());
+  }
+  Frequency2 operator* (const Frequency& lh, const Frequency& rh) {
+  	return Frequency2(lh.value() * rh.value());
+  }
+
+  Frequency2 operator/ (const Frequency2& lh, const double& rh) {
+  	return Frequency2(lh.value() / rh);
+  }
+  Frequency2 operator/ (const Acceleration& lh, const Length& rh) {
+  	return Frequency2(lh.value() / rh.value());
+  }
+  Frequency2 operator/ (const Stiffness& lh, const Mass& rh) {
+  	return Frequency2(lh.value() / rh.value());
+  }
+
 
 };

@@ -1,8 +1,10 @@
 #include "pch.h"
 
+#include "Time.h"
+#include "Frequency.h"
+#include "Mass.h"
 #include "Damping.h"
 #include "Stiffness.h"
-#include "Time.h"
 #include "PhysicsMath.h"
 
 namespace physics {
@@ -29,6 +31,12 @@ namespace physics {
   	return Damping(lh.value() * rh.value());
   }
   Damping operator* (const Time& lh, const Stiffness& rh) {
+  	return Damping(lh.value() * rh.value());
+  }
+  Damping operator* (const Mass& lh, const Frequency& rh) {
+  	return Damping(lh.value() * rh.value());
+  }
+  Damping operator* (const Frequency& lh, const Mass& rh) {
   	return Damping(lh.value() * rh.value());
   }
     

@@ -87,15 +87,24 @@ namespace physics {
   inline Pressure PHYSICSLIBRARY_API real(const Pressure& x) { return x; }
   inline Pressure PHYSICSLIBRARY_API imag(const Pressure&) { return 0_Pa; }
 
-  /* Pressure^2, this class is only for use in intermetiate operations of 
-     equations, so it has limited functionality. */
+  /**
+   * \class Pressure2 A class modeling a pressure squared for intermediate steps in equations
+   * 
+   * this class is only for use in intermetiate operations of.
+   * equations; it has limited functionality. 
+   */
   class PHYSICSLIBRARY_API Pressure2 : public PhysicsBase {
   public:
-    explicit Pressure2(double _pascals2 = 0) : PhysicsBase(_pascals2) { }
+    /**
+     * \brief Construct a Pressure2
+     * 
+     * \param _pascals2 the measure of Pascals^2
+     */
+    explicit Pressure2(const double _pascals2 = 0) : PhysicsBase(_pascals2) { }
+    Pressure2(const Pressure2&) = default;
     ~Pressure2() = default;
   };
 
-  // Friends
   Pressure2 PHYSICSLIBRARY_API operator+ (const Pressure2& lh, const Pressure2& rh);
 
   Pressure2 PHYSICSLIBRARY_API operator- (const Pressure2& lh, const Pressure2& rh);
@@ -107,8 +116,6 @@ namespace physics {
   Pressure2 PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const double& n);
   Pressure PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const Pressure& rh);
   double PHYSICSLIBRARY_API operator/ (const Pressure2& lh, const Pressure2& rh);
-
-  Pressure PHYSICSLIBRARY_API sqrt(const Pressure2& r);      // defined in PhysicsMath.cpp
 
 }; // namespace physics
 
