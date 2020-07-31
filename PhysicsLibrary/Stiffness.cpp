@@ -42,12 +42,14 @@ namespace physics {
   Stiffness operator/(const Stiffness& lh, const double& n) {
     return Stiffness(lh.value() / n);
   }
-
   Stiffness operator/(const Force& lh, const Length& rh) {
     return Stiffness(lh.value() / rh.value());
   }
   Stiffness operator/ (const Damping& lh, const Time& rh) {
   	return Stiffness(lh.value() / rh.value());
+  }
+  double operator/ (const Stiffness& lh, const Stiffness& rh) {
+    return lh.value() / rh.value();
   }
 
   bool operator==(const Stiffness& lh, const Stiffness& rh) {

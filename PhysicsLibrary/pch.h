@@ -11,5 +11,6 @@
 #include "framework.h"
 
 #include "PhysicsBase.h"
+#include "PhysicsMath.h"
 
 #endif //PCH_H

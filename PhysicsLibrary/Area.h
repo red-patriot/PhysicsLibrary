@@ -66,6 +66,7 @@ namespace physics {
 
   Area PHYSICSLIBRARY_API operator/ (const Volume& lh, const Length& rh);
   Area PHYSICSLIBRARY_API operator/ (const SecondMomentOfArea& lh, const Area& rh);
+  Area PHYSICSLIBRARY_API operator/ (const Area& lh, const double& n);
   double PHYSICSLIBRARY_API operator/ (const Area& lh, const Area& rh);
 
   bool PHYSICSLIBRARY_API operator== (const Area& lh, const Area& rh);

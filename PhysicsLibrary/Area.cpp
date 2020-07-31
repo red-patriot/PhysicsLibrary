@@ -36,11 +36,11 @@ namespace physics {
   Area operator/ (const SecondMomentOfArea& lh, const Area& rh) {
     return Area(lh.value() / rh.value());
   }
-  double operator/ (const Area& lh, const Area& rh) {
-    return lh.value() / rh.value();
-  }
   Area operator/ (const Area& lh, const double& n) {
     return Area(lh.value() / n);
+  }
+  double operator/ (const Area& lh, const Area& rh) {
+    return lh.value() / rh.value();
   }
 
   // Comparison Operators
